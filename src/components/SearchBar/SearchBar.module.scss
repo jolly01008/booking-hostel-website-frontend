@@ -1,0 +1,43 @@
+.searchContainer {
+  height: 8rem;
+  margin-top: 2rem;
+  background-color: rgb(195, 195, 195);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px
+}
+
+.searchSet {
+  margin: 0rem 0.9rem;
+  display: flex;
+  align-items: center;
+}
+
+.inputText {
+  height: 2rem;
+  background-color: white
+}
+
+.Date {
+  height: 2rem;
+  width: 13rem;
+  background-color: white
+}
+
+.headCount {
+  height: 2rem;
+  width: 5rem;
+  background-color: white
+}
+
+.button {
+  height: 3rem;
+  width: 5rem;
+  margin-left: 0.8rem
+}
+
+text {
+  font-size: 18px;
+}

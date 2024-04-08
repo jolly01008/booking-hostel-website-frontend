@@ -1,0 +1,22 @@
+{
+  "hostels": [
+    {
+      "name": "Asss",
+      "address": "aaaaaadfsdf",
+      "price": "1000",
+      "id": 1
+    },
+    {
+     "name": "BBB",
+      "address": "bbbbfsdf",
+      "price": "2000",
+      "id": 2
+    },
+    {
+     "name": "CCccc",
+      "address": "cccdccfccscccdf",
+      "price": "3000",
+      "id": 3
+    } 
+  ]
+}
