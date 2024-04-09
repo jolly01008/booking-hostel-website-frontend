@@ -30,7 +30,7 @@ export default function MainPage() {
         console.error(error);
       }
     };
-    // 最後記得執行 getTodosAsync 這個function
+    // 最後記得執行 getHostelsAsync 這個function
     getHostelsAsync();
   }, []);
 
