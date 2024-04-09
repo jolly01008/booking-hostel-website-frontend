@@ -18,5 +18,6 @@ export const login = async ({ email, password }) => {
 
   } catch (error) {
     console.error('[Siginin Failed]:', error)
+    return { success: false }
   }
 };

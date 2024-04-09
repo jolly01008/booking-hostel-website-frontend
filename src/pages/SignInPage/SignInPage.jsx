@@ -1,4 +1,7 @@
 import { useState } from "react";
+
+import Swal from 'sweetalert2'
+
 import AuthPageContainer from '../../components/AuthPageContainer/AuthPageContainer'
 import Button from '../../components/Button/Button'
 import AuthInput from '../../components/AuthInput/AuthInput'
@@ -23,7 +26,24 @@ export default function SignInPage() {
 
     if(success) {
       localStorage.setItem('token', token)
+      Swal.fire({
+        title: '登入成功',
+        text: '歡迎使用',
+        icon: "success",
+        position: "top",
+        timer: 1500,
+        showConfirmButton: false,
+      });
+      return
     }
+    Swal.fire({
+        title: '登入失敗',
+        text: '帳號或密碼輸入錯誤',
+        icon: "error",
+        position: "top",
+        timer: 1500,
+        showConfirmButton: false,
+      });
   }
 
   return ( 
