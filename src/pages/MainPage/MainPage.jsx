@@ -5,9 +5,11 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 
 //api
 import { getHostels } from '../../api/hostel';
+import { useAuth } from "../../contexts/AuthContext";
 
 import { useEffect } from "react";
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom'
 
 // SCSS
 import styles from "./MainPage.module.scss";
@@ -15,15 +17,17 @@ import styles from "./MainPage.module.scss";
 
 export default function MainPage() {
   const [hostels, setHostels] = useState([]);
-  console.log('hostels內容A:', hostels)
+
+  const { isAuthenticated } = useAuth();
+  const token = localStorage.getItem("token");
 
   // 瀏覽hostels的實際應用
   useEffect(() => {
-    const getHostelsAsync = async () => {
+    if(isAuthenticated){
+      const getHostelsAsync = async () => {
       try {
         //後端拿到的資料存到hostels
-        const hostels = await getHostels();
-        console.log('hostels內容B:', hostels)
+        const hostels = await getHostels(token);
         // 改變hostels的狀態，進而重新渲染畫面
         setHostels(hostels);
       } catch (error) {
@@ -32,7 +36,8 @@ export default function MainPage() {
     };
     // 最後記得執行 getHostelsAsync 這個function
     getHostelsAsync();
-  }, []);
+    }
+  }, [isAuthenticated, token]);
 
   return ( 
     <div className={styles.container}>

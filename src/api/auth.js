@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const atuhURL = 'http://localhost:3001/api'
+const authURL = 'http://localhost:3001/api'
 
 export const login = async ({ email, password }) => {
   try {
-    const { data } = await axios.post(`${atuhURL}/users/signIn`, { 
+    const { data } = await axios.post(`${authURL}/users/signIn`, { 
     email, 
     password })
 
@@ -19,5 +19,18 @@ export const login = async ({ email, password }) => {
   } catch (error) {
     console.error('[Siginin Failed]:', error)
     return { success: false }
+  }
+};
+
+export const checkPermission = async (token) => {
+  try {
+    const response = await axios.get(`${authURL}/hostels`, {
+      headers: {
+        Authorization: 'Bearer ' + token,
+      },
+    });
+    return response.data.success;
+  } catch (error) {
+    console.error('[Check Permission Failed]:', error);
   }
 };

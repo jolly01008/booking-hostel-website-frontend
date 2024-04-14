@@ -26,7 +26,8 @@ export default function SignInPage() {
       return 
     }
 
-    // 呼叫login這個function(帶著email、password向後端請求登入)。用解構方式取得success、token
+    // 此時這邊的login，應是AuthContext 的 defaultAuthContext 的 login
+    // 應該不同於，呼叫login這個function(帶著email、password向後端請求登入)
     const success = await login({
       email, password
     })
