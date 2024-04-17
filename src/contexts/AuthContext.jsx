@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import * as jwt from "jsonwebtoken"
 
-import { login } from "../api/auth"
+import { login, register } from "../api/auth"
 import { getUser } from "../api/setting"
 
 // 定義 context 內容
@@ -42,6 +42,16 @@ export const AuthProvider = ({ children }) => {
           phone: payload.phone,
           country: payload.country
         },
+         register: async (data) => {
+          // 呼叫register function(向後端請求註冊的api)
+          const success = await register({
+            name: data.name,
+            email: data.email,
+            password: data.password,
+            confirmPassword: data.confirmPassword,
+          });
+          return success;
+        },
         login: async ( data ) => {
           // 呼叫login function(向後端請求登入的api)抽取到這邊
           const { success, token } = await login({
@@ -70,8 +80,7 @@ export const AuthProvider = ({ children }) => {
             }
 
           },
-          logout: () => {},
-          register: () => {}
+          logout: () => {}
           
         }}
     > 

@@ -9,7 +9,6 @@ import { useAuth } from "../../contexts/AuthContext";
 
 import { useEffect } from "react";
 import { useState } from "react";
-import { useNavigate } from 'react-router-dom'
 
 // SCSS
 import styles from "./MainPage.module.scss";

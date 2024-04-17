@@ -22,15 +22,29 @@ export const login = async ({ email, password }) => {
   }
 };
 
-export const checkPermission = async (token) => {
+export const register = async ({
+  name,
+  email,
+  password,
+  confirmPassword
+}) => {
   try {
-    const response = await axios.get(`${authURL}/hostels`, {
-      headers: {
-        Authorization: 'Bearer ' + token,
-      },
+    const { data } = await axios.post(`${authURL}/signUp`, {
+      name,
+      email,
+      password,
+      confirmPassword,
     });
-    return response.data.success;
+
+    const { token } = data;
+
+    if (token) {
+      return { success: true, ...data };
+    }
+
+    return data;
   } catch (error) {
-    console.error('[Check Permission Failed]:', error);
+    console.error("[Signup Failed]: ", error);
+    return error;
   }
 };
