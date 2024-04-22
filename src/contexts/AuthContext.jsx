@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import * as jwt from "jsonwebtoken"
 
 import { login, register } from "../api/auth"
-import { getUser } from "../api/setting"
+import { getUserInfo } from "../api/setting"
 
 // 定義 context 內容
 const defaultAuthContext = {
@@ -26,6 +26,7 @@ export const AuthProvider = ({ children }) => {
     const token = localStorage.getItem('token');
     if ( token ) {
       const tempPayload = jwt.decode(token)
+      console.log('AuthContext的tempPayload', tempPayload)
       setIsAuthenticated(true)
       setPayload(tempPayload)
     }
@@ -72,8 +73,8 @@ export const AuthProvider = ({ children }) => {
           getUser: async (id) => {
             try{
               const token = localStorage.getItem('token'); //getUser頁面，已是登入驗證身分成功狀態，是可以取得toekn的
-              const getUserInfo = await getUser(token, id); // 呼叫getUser function(向後端請求getUser)
-              return getUserInfo
+              const userInfo = await getUserInfo(token, id); // 呼叫getUser function(向後端請求getUser)
+              return userInfo
             } catch (error) {
               console.error('getUser fail', error)
               return null

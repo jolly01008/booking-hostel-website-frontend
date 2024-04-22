@@ -1,7 +1,7 @@
 // components 
 import HostelCard from "../../components/HostelCard/HostelCard";
-// import NavContainer from "components/NavContainer/NavContainer";
 import SearchBar from "../../components/SearchBar/SearchBar";
+import NavBar from "../../components/NavBar/NavBar";
 
 //api
 import { getHostels } from '../../api/hostel';
@@ -37,23 +37,27 @@ export default function MainPage() {
     getHostelsAsync();
     }
   }, [isAuthenticated, token]);
-
+  console.log('hostels', hostels)
   return ( 
-    <div className={styles.container}>
-      <SearchBar></SearchBar>
-      <div className={styles.content}>
-        {hostels.map((hostel) => {
-          return ( 
-            <HostelCard 
-              key={hostel.id} 
-              picture={hostel.picture}
-              name={hostel.name} 
-              address={hostel.address}
-              price={hostel.Rooms[0].price}   //取出Rooms的第一個price是最低價格
-              /> 
-          );
-        })}
+    <div>
+      <NavBar></NavBar>
+      <div className={styles.container}>
+        <SearchBar></SearchBar>
+        <div className={styles.content}>
+          {hostels.map((hostel) => {
+            return ( 
+              <HostelCard 
+                key={hostel.id} 
+                picture={hostel.picture}
+                name={hostel.name} 
+                address={hostel.address}
+                price={hostel.Rooms[0].price}   //取出Rooms的第一個price是最低價格
+                /> 
+            );
+          })}
+        </div>
       </div>
+      
     </div>
   ) ;
 }

@@ -1,0 +1,90 @@
+.container {
+  margin: 0rem 8rem;
+  // border: solid red 1px;
+}
+
+.selfIntroContainer {
+  // border: solid green 1px;
+  display: flex;
+  align-items: top;
+}
+
+.aboutMe {
+  margin-top: 8px;
+}
+
+.avatar {
+  // position:relative;
+  height: 8.5rem;
+  width: 8.5rem;
+  border: solid rgb(187, 187, 187) 1px;
+  border-radius: 100%;
+  margin-left: 1rem;
+  // text-align: center;
+  // line-height: 210px;
+  // background-size: cover;
+  overflow: hidden
+}
+
+.img{
+  position: relative;
+  height: 8.5rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+}
+
+.introduction {
+  // border: solid green 1px;
+  margin-left: 4rem;
+  width: 23rem;
+  overflow-wrap: break-word
+}
+
+.basicInformContainer {
+  // border: solid green 1px;
+  margin-left: 2rem;
+}
+
+.basicInform {
+  // list-style-type: none;
+}
+
+.bookingContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.bookingBlock {
+  margin-left: 18px;
+  margin-top: 8px;
+}
+
+.bookingImgBlock {
+  width: 12rem;
+  height: 7.2rem;
+  border: solid gray 1px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  // margin-left: 13px;
+  // margin-top: 8px;
+}
+
+.roomText {
+  font-size: 14px;
+  line-height: 10px;
+}
+
+.bookingImg {
+  height: 10rem;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bookingHistory {
+  margin-top: 3.5rem;
+  margin-left: 14px
+}

@@ -1,0 +1,27 @@
+html, body {
+  margin: 0
+}
+
+.NavBar {
+  width: 100%;
+  height: 60px;
+  background-color: #2d7388;
+  display: flex;
+  justify-content:space-around;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.userSet{
+  display: flex;
+}
+.otherSet{
+  display: flex;
+  right: 10px;
+}
+.barBtn{
+  margin-right: 35px;
+  color: white;
+  font-size: 18px;
+  text-decoration:none
+}
