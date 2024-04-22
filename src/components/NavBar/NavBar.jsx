@@ -22,7 +22,6 @@ export default function NavBar({  landlordId }) {
 
   useEffect(() => {
     const fetchData = async () => {
-    console.log('NavBar的isAuthenticated內容A:', isAuthenticated)
       try {
         const data = await getUser(id);
         setUserData(data.userData);
@@ -36,7 +35,6 @@ export default function NavBar({  landlordId }) {
     }
   }, [id, isAuthenticated, getUser]);
 
-  console.log('NavBar的userData內容是啥:', userData)
 
   return (
     <div>
@@ -45,6 +43,9 @@ export default function NavBar({  landlordId }) {
         
         <div className={styles.userSet}>
           <h6 className={styles.barBtn}>Hi ~ {userData.name} </h6>
+          {userData.currentRole === "tenant" && (
+            <NavLink className={styles.barBtn} to={`/users/${id}`}>個人資料</NavLink>
+          )}
           <NavLink className={styles.barBtn} to="/hostels">首頁</NavLink>
           { userData.role === "tenant" && (
             <NavLink className={styles.barBtn} to={`/users/${id}/applyLandlord`}>申請成房東</NavLink>
@@ -62,7 +63,7 @@ export default function NavBar({  landlordId }) {
             <NavLink className={styles.barBtn} to={`/users/${id}`}>切換成房客</NavLink>
           )}
           <div onClick={handleClick}>
-            <a href="test" className={styles.barBtn}>登出</a>
+            <a href="/signin" className={styles.barBtn}>登出</a>
           </div>
         </div>
       </div>)}

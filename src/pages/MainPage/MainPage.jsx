@@ -37,7 +37,7 @@ export default function MainPage() {
     getHostelsAsync();
     }
   }, [isAuthenticated, token]);
-  console.log('hostels', hostels)
+  
   return ( 
     <div>
       <NavBar></NavBar>

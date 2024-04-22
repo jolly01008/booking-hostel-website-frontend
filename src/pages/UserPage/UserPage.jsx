@@ -20,7 +20,6 @@ export default function UserPage() {
   const { getUser } = useAuth()
   useEffect(() => {
     const fetchData = async () => {
-    // console.log('isAuthenticated內容A:', isAuthenticated)
       try {
         const data = await getUser(id);
         setUserData(data.userData);
@@ -35,10 +34,6 @@ export default function UserPage() {
       fetchData();
     }
   }, [id, isAuthenticated, getUser]);
-
-  console.log('userData內容是啥:', userData)
-  console.log('newBookingRooms內容是啥:', newBookingRooms)
-  console.log('pastBookingRooms內容是啥:', pastBookingRooms)
 
   return (
     <div>
