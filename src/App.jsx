@@ -7,6 +7,7 @@ import SignUpPage from "./pages/SignUpPage/SignUpPage.jsx";
 import SignInPage from "./pages/SignInPage/SignInPage.jsx";
 import MainPage from "./pages/MainPage/MainPage.jsx";
 import UserPage from "./pages/UserPage/UserPage.jsx";
+import LandlordPage from "./pages/LandlordPage/LandlordPage.jsx";
 
 
 function App() {
@@ -22,6 +23,10 @@ function App() {
               <Route path="users">
                   <Route index element={<UserPage />} />
                   <Route path=":id" element={<UserPage />} />
+              </Route>
+              <Route path="landlords">
+                  <Route index element={<LandlordPage />} />
+                  <Route path=":landlordId" element={<LandlordPage />} />
               </Route>
             </Routes>
           </AuthProvider>

@@ -5,7 +5,7 @@ import * as jwt from "jsonwebtoken"
 import { useNavigate } from "react-router-dom";
 
 import { login, register } from "../api/auth"
-import { getUserInfo } from "../api/setting"
+import { getUserInfo, getLandlordInfo, switchRole } from "../api/setting"
 
 // 定義 context 內容
 const defaultAuthContext = {
@@ -41,8 +41,8 @@ export const AuthProvider = ({ children }) => {
           id: payload.id,
           name: payload.name,
           email: payload.email,
-          phone: payload.phone,
-          country: payload.country
+          role: payload.role,
+          currentRole: payload.currentRole,
         },
          register: async (data) => {
           // 呼叫register function(向後端請求註冊的api)
@@ -81,6 +81,25 @@ export const AuthProvider = ({ children }) => {
               return null
             }
 
+          },
+          getLandlord: async (landlordId) => {
+            try{
+              const token = localStorage.getItem('token'); //getUser頁面，已是登入驗證身分成功狀態，是可以取得toekn的
+              const landlordInfo = await getLandlordInfo(token, landlordId); // 呼叫getLandlordInfo function(向後端請求)
+              return landlordInfo
+            } catch (error) {
+              console.error('getLandlord fail', error)
+              return null
+            }
+          },
+          switchRole: async () => {
+            const token = localStorage.getItem('token');
+            const { data, switchedToken } = await switchRole(token) //先用目前的token呼叫這支api
+
+            localStorage.setItem("token", switchedToken); // 呼叫switchRole後，後端會簽發一組新的token，儲存到localSotrage
+            const switchedRolePayload = jwt.decode(switchedToken) //解析這組新的token
+            setPayload(switchedRolePayload); // 解析出來的新payload，setPayload()更新狀態
+            return { data, switchedToken }
           },
           logout: () => {
             localStorage.removeItem("token");

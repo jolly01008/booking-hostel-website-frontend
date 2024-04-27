@@ -12,7 +12,6 @@ try {
       Authorization: " Bearer " + token,
     }
   });
-  console.log('setting的response', response)
   const data = response.data
   
   return data;
@@ -26,6 +25,49 @@ try {
       });
     console.error('getUser is Fail', error)
   }
-  
+}
+export const getLandlordInfo = async (token, landlordId) => {
+try {
+    const response = await axios.get(`${baseURL}/landlords/${landlordId}`,
+  {
+    headers: {
+      Authorization: " Bearer " + token,
+    }
+  });
 
+  const data = response.data
+  return data;
+  } catch ( error ){
+     Swal.fire({
+        title: '沒有權限',
+        text: error.response.data.message,
+        icon: "error",
+        timer: 1800,
+        showConfirmButton: false,
+      });
+    console.error('getLandlordInfo is Fail', error)
+  }
+}
+
+export const switchRole = async (token) => {
+try {
+    const response = await axios.patch(`${baseURL}/switchRole`, null,
+  {
+    headers: {
+      Authorization: " Bearer " + token,
+    }
+  });
+  const data = response.data // 這支api從後端取得的一整包data，包含status、data(用戶id)、switchedToken、message
+  
+  return data;
+  } catch ( error ){
+     Swal.fire({
+        title: '發生了一些錯誤',
+        text: error.response.data.message,
+        icon: "error",
+        timer: 1800,
+        showConfirmButton: false,
+      });
+    console.error('switchRole is Fail', error)
+  }
 }
