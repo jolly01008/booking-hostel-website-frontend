@@ -1,10 +1,8 @@
 .container {
   margin: 0rem 8rem;
-  // border: solid red 1px;
 }
 
 .selfIntroContainer {
-  // border: solid green 1px;
   display: flex;
   align-items: top;
 }
@@ -26,65 +24,72 @@
   overflow: hidden
 }
 
-.img{
-  position: relative;
-  height: 8.5rem;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  
-}
-
 .introduction {
-  // border: solid green 1px;
   margin-left: 4rem;
   width: 23rem;
   overflow-wrap: break-word
 }
 
 .basicInformContainer {
-  // border: solid green 1px;
   margin-left: 2rem;
 }
 
-.basicInform {
-  // list-style-type: none;
+// .basicInform {
+//   list-style-type: none;
+// }
+
+.btn {
+  margin-left: 4rem;
+  margin-bottom: 0px;
 }
 
 .bookingContainer {
   display: flex;
   flex-wrap: wrap;
+  margin-top: 3rem;
 }
 
-.bookingBlock {
-  margin-left: 18px;
-  margin-top: 8px;
+.pastBooking {
+  margin-left: 2rem;
 }
 
-.bookingImgBlock {
-  width: 12rem;
-  height: 7.2rem;
-  border: solid gray 1px;
-  overflow: hidden;
-  margin-bottom: 10px;
-  // margin-left: 13px;
-  // margin-top: 8px;
+.bookingTitle,
+.bookingList {
+  display: flex;
+  width: 35rem;
+  justify-content: space-around;
+  align-items: center;
+  height: 2.3rem;
 }
 
-.roomText {
-  font-size: 14px;
-  line-height: 10px;
+.bookingTitle{
+  background-color: #52879494;
+  margin-bottom: 0.5rem;
 }
 
-.bookingImg {
-  height: 10rem;
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.bookingList {
+  background-color: #b6c5c9;
+  margin-bottom: 0.5rem;
+  
 }
 
-.bookingHistory {
-  margin-top: 3.5rem;
-  margin-left: 14px
+.bookingItem {
+  margin-left: 0.5rem;
+  width: 20%;
+  font-size: 14px
+}
+.bookingItemDate {
+  margin-left: 1rem;
+  width: 35%;
+  font-size: 14px
+}
+.bookingItemPrice {
+  margin-left: 1rem;
+  width: 13%;
+  font-size: 14px
+}
+.bookingItemTenant {
+  margin-left: 1rem;
+  width: 15%;
+  font-size: 14px
 }

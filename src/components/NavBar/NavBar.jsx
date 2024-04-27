@@ -2,7 +2,6 @@ import { useAuth } from "../../contexts/AuthContext.jsx";
 import { NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom'
 
-import { getLandlordInfo } from "../../api/setting.js"
 
 //hook
 import { useEffect, useState } from "react";
@@ -28,7 +27,6 @@ export default function NavBar() {
     try{
       const res = await switchRole(); ; // 執行AuthContext的switchRole
       navigate(`/landlords/${res.data}`)
-      await getLandlordInfo(res.switchedToken, res.data);
     } catch(error) {
       console.error("switchRole Error", error);
     }
