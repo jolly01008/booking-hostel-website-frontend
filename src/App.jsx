@@ -8,6 +8,9 @@ import SignInPage from "./pages/SignInPage/SignInPage.jsx";
 import MainPage from "./pages/MainPage/MainPage.jsx";
 import UserPage from "./pages/UserPage/UserPage.jsx";
 import LandlordPage from "./pages/LandlordPage/LandlordPage.jsx";
+import CreateHostel from "./pages/CreateHostel/CreateHostel.jsx";
+import CreateRoom from "./pages/CreateRoom/CreateRoom.jsx";
+import LandlordHostels from "./pages/LandlordHostels/LandlordHostels.jsx";
 
 
 function App() {
@@ -27,6 +30,9 @@ function App() {
               <Route path="landlords">
                   <Route index element={<LandlordPage />} />
                   <Route path=":landlordId" element={<LandlordPage />} />
+                  <Route path=":landlordId/hostels" element={<LandlordHostels />} />
+                  <Route path=":landlordId/hostels/create" element={<CreateHostel />} />
+                  <Route path=":landlordId/hostels/:hostelId/createRoom" element={<CreateRoom />} />
               </Route>
             </Routes>
           </AuthProvider>
