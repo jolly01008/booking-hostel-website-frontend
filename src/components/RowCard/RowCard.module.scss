@@ -1,0 +1,31 @@
+
+.roomDatas {
+  display: flex;
+  width: 100%;
+  margin-bottom: 2rem;
+  // border:solid 1px red
+}
+
+.roomDatasImg {
+  border: rgb(175, 175, 175) 1px solid;
+  height: 8rem;
+  width: 14rem;
+}
+
+.roomDatasContent {
+  padding: 0.6rem;
+  word-break: break-all;
+  margin-left: 1rem;
+  text-wrap: wrap;
+  width: 100%;
+}
+.roomDatasContent:hover{
+  color: rgb(51, 113, 121);
+  font-weight: 700;
+  background-color: rgb(203, 208, 209);
+}
+
+.btn {
+  margin-top: 2.5rem;
+  transform: translate(50%);
+}
