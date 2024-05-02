@@ -30,8 +30,6 @@ export const postHostel = async (landlordId, token, name, address, description, 
 };
 // 瀏覽房東所有旅館
 export const getLandlordHostels = async (landlordId, token) => {
-  console.log('是否呼叫')
-  console.log('landlord.js token', token)
   try {
     const response = await axios.get(`${baseURL}/landlords/${landlordId}/hostels`,
       {
@@ -45,8 +43,7 @@ export const getLandlordHostels = async (landlordId, token) => {
 
   } catch (error) {
     Swal.fire({
-        title: '沒有權限',
-        text: error.response.data.message,
+        title: error.response.data.message,
         icon: "error",
         timer: 1800,
         showConfirmButton: false,
@@ -86,6 +83,56 @@ export const postRoom = async (landlordId, hostelId, token, title, type, headcou
 
   } catch (error) {
     console.log("postRoom  is Fail", error);
+    throw error;
+  }
+};
+
+// 瀏覽房東單一旅館
+export const getLandlordHostel = async (landlordId, hostelId, token) => {
+  try {
+    const response = await axios.get(`${baseURL}/landlords/${landlordId}/hostels/${hostelId}/rooms`,
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
+    );
+    const { data } = response;
+    return data;
+
+  } catch (error) {
+    Swal.fire({
+        text: error.response.data.message,
+        icon: "warning",
+        timer: 1800,
+        showConfirmButton: false,
+      });
+    console.log("getLandlordHostels  is Fail", error);
+    throw error;
+  }
+};
+
+// 瀏覽房東單一房間
+export const getLandlordRoom = async (landlordId, hostelId, roomId, token) => {
+  try {
+    const response = await axios.get(`${baseURL}/landlords/${landlordId}/hostels/${hostelId}/rooms/${roomId}`,
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
+    );
+    const { data } = response;
+    return data;
+
+  } catch (error) {
+    Swal.fire({
+        text: error.response.data.message,
+        icon: "warning",
+        timer: 1800,
+        showConfirmButton: false,
+      });
+    console.log("getLandlordRoom  is Fail", error);
     throw error;
   }
 };

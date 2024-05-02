@@ -12,6 +12,7 @@ import CreateHostel from "./pages/CreateHostel/CreateHostel.jsx";
 import CreateRoom from "./pages/CreateRoom/CreateRoom.jsx";
 import LandlordHostels from "./pages/LandlordHostels/LandlordHostels.jsx";
 import LandlordHostel from "./pages/LandlordHostel/LandlordHostel.jsx";
+import LandlordRoom from "./pages/LandlordRoom/LandlordRoom.jsx";
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
               </Route>
               <Route path="landlords">
                   <Route index element={<LandlordPage />} />
+                  <Route path=":landlordId/hostels/:hostelId/rooms/:roomId" element={<LandlordRoom />} />
                   <Route path=":landlordId/hostels/:hostelId/rooms" element={<LandlordHostel />} />
                   <Route path=":landlordId/hostels/:hostelId/createRoom" element={<CreateRoom />} />
                   <Route path=":landlordId/hostels/create" element={<CreateHostel />} />

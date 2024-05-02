@@ -12,22 +12,21 @@
   margin: 0rem 12rem 0.5rem 12rem
 }
 
-.allRoomsDatas {
+.SingleRoomDatas {
   // border: solid black 2px;
-  display: flex;
-}
-
-.hostelData {
-  width: 17rem;
+  // display: flex;
 }
 
 .text {
   font-size: 15px;
+  line-height: 2rem;
 }
 
-.roomContainer {
-  display: flex;
-  flex-wrap: wrap;
+.roomTextDatas{
   // border: solid pink 2px;
-  justify-content: flex-start;
+  background-color: rgb(240, 240, 240);
+  margin-top: 1.5rem;
+  margin-bottom: 6rem;
+  padding: 30px 50px ;
+  word-break: break-word;
 }

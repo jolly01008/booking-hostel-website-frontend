@@ -60,7 +60,7 @@ export default function NavBarLandlord() {
             <NavLink className={styles.barBtn} to={`/landlords/${landlordId}`}>房東資料</NavLink>
           )}
           { currentMember.role === "landlord" && currentMember.currentRole === "landlord" && (
-            <NavLink className={styles.barBtn}>我的房源</NavLink>
+            <NavLink className={styles.barBtn} to={`/landlords/${landlordId}/hostels`}>我的旅館</NavLink>
           )}
         </div>
 
