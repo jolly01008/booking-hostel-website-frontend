@@ -1,37 +1,31 @@
 // components
 import NavBarLandlord from "../../components/NavBarLandlord/NavBarLandlord";
 
+// hook
+import { useParams } from "react-router-dom";
+// import { useEffect, useState } from "react";
+// import { useAuth } from "../../contexts/AuthContext.jsx";
+import { NavLink } from 'react-router-dom';
+
+// scss
+import styles from "./LandlordHostel.module.scss";
+
 export default function LandlordHostels () {
-  // const { landlordId } = useParams();
+  const { landlordId, hostelId } = useParams();
   // const { currentMember, isAuthenticated } = useAuth();
-  // const token = localStorage.getItem("token");
+  const token = localStorage.getItem("token");
+  console.log('token', token)
 
-  // const [hostels, setHostels] = useState([]);
-
-  // // 瀏覽hostels的實際應用
-  // useEffect(() => {
-  //   if(isAuthenticated){
-  //     const getLandlordHostelsAsync = async () => {
-  //     try {
-  //       //後端拿到的資料存到hostels
-  //       const hostels = await getLandlordHostels(landlordId, token);
-  //       // 改變hostels的狀態，進而重新渲染畫面
-  //       setHostels(hostels);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
-  //   // 最後記得執行 getLandlordHostelsAsync 這個function
-  //   getLandlordHostelsAsync();
-  //   }
-  // }, [isAuthenticated, token, landlordId]);
-
-  // console.log('hostels內容', hostels)
-  // console.log('currentMember內容', currentMember)
   return (
     <div>
       <NavBarLandlord></NavBarLandlord>
       <h1>test</h1>
+      {/* 此處要瀏覽該旅館的全部房間 */}
+        <div className={styles.btn}>
+          <NavLink to={`/landlords/${landlordId}/hostels/${hostelId}/createRoom`}>
+            <button type="submit"> 新增房間 </button>
+          </NavLink>
+        </div>
     </div>
   )
 } 

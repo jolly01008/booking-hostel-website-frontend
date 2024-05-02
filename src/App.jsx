@@ -30,11 +30,11 @@ function App() {
               </Route>
               <Route path="landlords">
                   <Route index element={<LandlordPage />} />
-                  <Route path=":landlordId" element={<LandlordPage />} />
-                  <Route path=":landlordId/hostels" element={<LandlordHostels />} />
-                  <Route path=":landlordId/hostels/create" element={<CreateHostel />} />
-                  <Route path=":landlordId/hostels/:hostelId/createRoom" element={<CreateRoom />} />
                   <Route path=":landlordId/hostels/:hostelId/rooms" element={<LandlordHostel />} />
+                  <Route path=":landlordId/hostels/:hostelId/createRoom" element={<CreateRoom />} />
+                  <Route path=":landlordId/hostels/create" element={<CreateHostel />} />
+                  <Route path=":landlordId/hostels" element={<LandlordHostels />} />
+                  <Route path=":landlordId" element={<LandlordPage />} />
               </Route>
             </Routes>
           </AuthProvider>
