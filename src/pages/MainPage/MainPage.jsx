@@ -48,10 +48,11 @@ export default function MainPage() {
             return ( 
               <HostelCard 
                 key={hostel.id} 
+                hostelId={hostel.id}
                 picture={hostel.picture}
                 name={hostel.name} 
                 address={hostel.address}
-                price={hostel.Rooms[0].price}   //取出Rooms的第一個price是最低價格
+                price={hostel.Rooms.length > 0?hostel.Rooms[0].price : "(該房間尚未設定完畢)"}   //取出Rooms的第一個price是最低價格
                 /> 
             );
           })}

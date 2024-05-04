@@ -13,6 +13,7 @@ import CreateRoom from "./pages/CreateRoom/CreateRoom.jsx";
 import LandlordHostels from "./pages/LandlordHostels/LandlordHostels.jsx";
 import LandlordHostel from "./pages/LandlordHostel/LandlordHostel.jsx";
 import LandlordRoom from "./pages/LandlordRoom/LandlordRoom.jsx";
+import HostelPage from "./pages/HostelPage/HostelPage.jsx";
 
 
 function App() {
@@ -23,11 +24,13 @@ function App() {
             <Routes>
               <Route path="signin" element={<SignInPage />} />
               <Route path="signup" element={<SignUpPage />} />
-              <Route path="hostels" element={<MainPage />} />
-              {/* <Route path="users/:id" element={<UserPage />} /> */}
               <Route path="users">
                   <Route index element={<UserPage />} />
                   <Route path=":id" element={<UserPage />} />
+              </Route>
+              <Route path="hostels">
+                  <Route index element={<MainPage />} />
+                  <Route path=":hostelId" element={<HostelPage />} />
               </Route>
               <Route path="landlords">
                   <Route index element={<LandlordPage />} />

@@ -1,43 +1,39 @@
-.searchContainer {
-  height: 8rem;
-  margin-top: 2rem;
-  background-color: rgb(195, 195, 195);
+.conditionBar {
+  width: 100%;
+  height: 7rem;
+  background-color: #bebebe;
   display: flex;
+  justify-content: space-evenly;
+  margin-top: 50px;
+  margin-bottom: 20px;
   flex-wrap: wrap;
-  justify-content: center;
   align-items: center;
-  border-radius: 8px
+  border-radius: 8px;
 }
 
-.searchSet {
-  margin: 0rem 0.9rem;
+.barSet {
+  /*   border: orange 1px solid; */
   display: flex;
   align-items: center;
 }
 
-.inputText {
-  height: 2rem;
-  background-color: white
-}
-
-.Date {
-  height: 2rem;
+.placeInput {
   width: 13rem;
-  background-color: white
+  height: 1.6rem;
+  margin-left: 0.2rem
 }
 
-.headCount {
-  height: 2rem;
-  width: 5rem;
-  background-color: white
+.dateInput {
+  height: 1.6rem;
+  margin-left: 0.2rem
 }
 
-.button {
-  height: 3rem;
-  width: 5rem;
-  margin-left: 0.8rem
+.headCountInput {
+  height: 1.6rem;
+  width: 3.5rem;
+  margin-left: 0.2rem
 }
 
-text {
-  font-size: 18px;
+.textItem{
+  margin-top: 0.5rem;
 }

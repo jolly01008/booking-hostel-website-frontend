@@ -16,7 +16,7 @@ import styles from "./LandlordHostels.module.scss";
 
 export default function LandlordHostels () {
   const { landlordId } = useParams();
-  const { currentMember, isAuthenticated } = useAuth();
+  const { isAuthenticated } = useAuth();
   const token = localStorage.getItem("token");
 
   const [hostels, setHostels] = useState([]);
@@ -39,8 +39,6 @@ export default function LandlordHostels () {
     }
   }, [isAuthenticated, token, landlordId]);
 
-  console.log('hostels內容', hostels)
-  console.log('currentMember內容', currentMember)
   return (
     <div>
       <NavBarLandlord></NavBarLandlord>
