@@ -1,0 +1,31 @@
+  .container {
+    margin: 0rem 12rem 0.5rem 12rem
+  }
+
+  .allRoomsDatas{
+    display: flex;
+  }
+
+  .hostelAndLandlord {
+    padding: 1rem;
+    width: 16rem;
+  }
+
+  .hostelData {
+    margin-bottom: 2.5rem;
+  }
+
+  .landlordData {
+    margin-bottom: 2.5rem;
+  }
+ 
+  .text {
+    font-size: 15px;
+  }
+
+  .roomContainer {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    justify-content: flex-start;
+  }
