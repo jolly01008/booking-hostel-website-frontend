@@ -44,9 +44,9 @@ export default function LandlordHostel () {
     <div>
       <NavBarLandlord></NavBarLandlord>
       <div className={styles.container}>
-             <h4>房間資訊</h4>
               <div className={styles.SingleRoomDatas}>
                   <div>
+                    <h4 style={{ marginBottom: "1.5rem", fontWeight: "bold" }}>{room.title} 的相關資訊</h4>
                     { room ? (
                       <PictureCard
                         pictures={JSON.parse(room.pictures)}

@@ -25,3 +25,15 @@ export const getHostelPage = async (hostelId, token) => {
     console.error('[Get a hostel failed]:', error)
   } 
 }
+export const getRoomPage = async (hostelId, roomId, token) => {
+  try {
+    const res = await axios.get(`${baseUrl}/hostels/${hostelId}/rooms/${roomId}`, {
+      headers: {
+        Authorization: "Bearer " + token
+      }
+    });
+    return res.data
+  }catch(error) {
+    console.error('[Get a Room failed]:', error)
+  } 
+}

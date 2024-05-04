@@ -66,7 +66,7 @@ export default function UserPage() {
             (newBookingRooms.map((booking) => (
               <div key={booking.id} className={styles.bookingBlock}>
               <div className={styles.bookingImgBlock}>
-                <img className={styles.bookingImg} src={booking.room.pictures.split(',')[0]} alt=""></img>  
+                <img className={styles.bookingImg} src={JSON.parse(booking.room.pictures)[0]} alt="房間圖片"></img>  
               </div>
               <h6 className={styles.roomText}>{booking.bookingDate} ~ {booking.checkoutDate}</h6>
               <h6 className={styles.roomText}>房型:{booking.room.title}</h6>
@@ -82,7 +82,7 @@ export default function UserPage() {
             (pastBookingRooms.map((booking) => (
               <div key={booking.id} className={styles.bookingBlock}>
               <div className={styles.bookingImgBlock}>
-                <img className={styles.bookingImg} src={booking.room.pictures.split(',')[0]} alt=""></img>  
+                <img className={styles.bookingImg} src={JSON.parse(booking.room.pictures)[0]} alt=""></img>  
               </div>
               <h6 className={styles.roomText}>{booking.bookingDate} ~ {booking.checkoutDate}</h6>
               <h6 className={styles.roomText}>房型:{booking.room.title}</h6>

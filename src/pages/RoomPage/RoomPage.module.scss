@@ -1,0 +1,33 @@
+.btn {
+  display: flex;
+  margin-top: 2.5rem;
+  margin-left: 45%;
+  width: 20%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  // border:red 0.5px solid;
+  margin: 0rem 12rem 0.5rem 12rem
+}
+
+.SingleRoomDatas {
+  // border: solid black 2px;
+  // display: flex;
+}
+
+.text {
+  font-size: 16px;
+  line-height: 2rem;
+}
+
+.roomTextDatas {
+  // border: solid pink 2px;
+  background-color: rgb(240, 240, 240);
+  margin-top: 1.5rem;
+  margin-bottom: 6rem;
+  padding: 30px 50px;
+  word-break: break-word;
+  border-radius: 10px
+}
