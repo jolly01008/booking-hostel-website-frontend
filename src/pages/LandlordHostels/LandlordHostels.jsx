@@ -21,7 +21,7 @@ export default function LandlordHostels () {
 
   const [hostels, setHostels] = useState([]);
 
-  // 瀏覽hostels的實際應用
+  // 瀏覽LandlordHostel的實際應用
   useEffect(() => {
     if(isAuthenticated){
       const getLandlordHostelsAsync = async () => {

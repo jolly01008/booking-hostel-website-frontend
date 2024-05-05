@@ -2,17 +2,13 @@
 .hostelContainer {
   display: flex;
   flex-wrap: wrap;
-/*   border: solid pink 2px; */
   justify-content: flex-start;
 }
 .hostelBlock{
   margin-left: 17px;
   margin-top: 12px;
-  // border: solid 1px red;
 }
 .hostelImgBlock {
-/*   width: 12rem;
-  height: 7.2rem; */
   width: 20rem;
   height: 12rem;
   border: solid rgb(180, 180, 180) 1px;
@@ -27,7 +23,6 @@
 }
 
 .text {
-/*   display: flex; */
   line-height: 6px;
   margin-top: 0.65rem; 
   font-size: 14px;
