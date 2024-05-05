@@ -17,7 +17,7 @@ export default function SearchBar({searchRoomsResults}) {
   const [checkout, setCheckout] = useState("");
   const [adults, setAdults] = useState("");
   const [kids, setKis] = useState("");
-  // const [searchData, setSearchData] = useState("");
+  const [searchData, setSearchData] = useState(""); // --------B直接在這邊setLocalStoreage
   
   const searchRoomsClick = async (event) => {
     event.preventDefault(); // 防止表單預設提交行為
@@ -26,21 +26,27 @@ export default function SearchBar({searchRoomsResults}) {
 
       if( searchResults.message === "找不到符合條件的資料") {
         await Swal.fire({
-          title: "搜尋失敗",
-          text: "找不到相關的結果，請試試別的關鍵字",
+          title: "找不到符合條件的資料",
+          text: "找不到相關結果，這些日期沒有房間了。或試試別的關鍵字。",
           timer: 2800,
           icon: "warning",
           showConfirmButton: false,
         });
         window.location.reload();
       }
-
+      // searchData(searchResults.searchData); // -----A將結果傳遞給父組件
+      setSearchData(searchResults.searchData) // --------B直接在這邊setLocalStoreage
       searchRoomsResults(searchResults.results); // 將結果傳遞給父組件
-      // setSearchData(searchResults.searchData)
 
       } catch (error) {
         console.error("搜尋失敗，錯誤信息：", error);
       }
+      
+      localStorage.setItem('keyword', JSON.stringify(searchData.keyword));
+      localStorage.setItem('checkin', JSON.stringify(searchData.checkin));
+      localStorage.setItem('checkout', JSON.stringify(searchData.checkout));
+      localStorage.setItem('adults', JSON.stringify(searchData.adults));
+      localStorage.setItem('kids', JSON.stringify(searchData.kids));
   };
 
   return (

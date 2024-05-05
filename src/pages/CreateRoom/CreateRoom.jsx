@@ -10,7 +10,7 @@ import NavBarLandlord from "../../components/NavBarLandlord/NavBarLandlord";
 import styles from "./CreateRoom.module.scss";
 
 // api
-import { postRoom } from "../../api/landlord"; //記得換
+import { postRoom } from "../../api/landlord";
 
 
 export default function CreateRoom () {

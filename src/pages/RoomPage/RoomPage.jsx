@@ -1,11 +1,13 @@
 // components
 import NavBar from "../../components/NavBar/NavBar";
 import PictureCard from "../../components/PictureCard/PictureCard.jsx";
+import Button from '../../components/Button/Button'
 
 // hook
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../contexts/AuthContext.jsx";
+import Swal from "sweetalert2";
 
 //api
 import { getRoomPage } from "../../api/hostel.js";
@@ -17,9 +19,26 @@ export default function RoomPage () {
   const { hostelId, roomId } = useParams();
   const { isAuthenticated } = useAuth();
   const token = localStorage.getItem("token");
+  const navigate = useNavigate();
 
   const [room, setRoom] = useState("");
   const [hostel, setHostel] = useState("");
+
+  const wantBookingRoom = async () => {
+    try {
+      navigate(`/hostels/${hostelId}/rooms/${roomId}/booking`);
+
+    } catch (error) {
+      console.error("預約房間失敗，錯誤信息：", error);
+      Swal.fire({
+        title: "點擊預約房間錯誤",
+        text: error.response.data.message,
+        timer: 1800,
+        icon: "error",
+        showConfirmButton: false,
+      });
+    }
+  };
 
   // 瀏覽room的實際應用
   useEffect(() => {
@@ -66,9 +85,8 @@ export default function RoomPage () {
                     <p className={styles.text}>◾旅館名稱 : {hostel.name}</p>
                     <p className={styles.text}>◾旅館地址 : {hostel.address}</p>
                   </div>
-                     
               </div>
-              
+              <Button  title="我想預約" size="big" onClick={wantBookingRoom}></Button>
       </div>
         
     </div>

@@ -15,6 +15,8 @@ import LandlordHostel from "./pages/LandlordHostel/LandlordHostel.jsx";
 import LandlordRoom from "./pages/LandlordRoom/LandlordRoom.jsx";
 import HostelPage from "./pages/HostelPage/HostelPage.jsx";
 import RoomPage from "./pages/RoomPage/RoomPage.jsx";
+import BookingRoom from "./pages/BookingRoom/BookingRoom.jsx";
+// import ApplyLandlord from "./pages/ApplyLandlord/ApplyLandlord.jsx";
 
 
 function App() {
@@ -27,10 +29,12 @@ function App() {
               <Route path="signup" element={<SignUpPage />} />
               <Route path="users">
                   <Route index element={<UserPage />} />
+                  {/* <Route path=":id//applyLandlord" element={<ApplyLandlord />} /> */}
                   <Route path=":id" element={<UserPage />} />
               </Route>
               <Route path="hostels">
                   <Route index element={<MainPage />} />
+                  <Route path=":hostelId/rooms/:roomId/booking" element={<BookingRoom />} />
                   <Route path=":hostelId/rooms/:roomId" element={<RoomPage />} />
                   <Route path=":hostelId" element={<HostelPage />} />
               </Route>

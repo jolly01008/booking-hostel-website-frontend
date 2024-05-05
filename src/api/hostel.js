@@ -38,6 +38,30 @@ export const getRoomPage = async (hostelId, roomId, token) => {
     console.error('[Get a Room failed]:', error)
   } 
 }
+export const getBookingRoom = async (hostelId, roomId, token, keyword, checkin, checkout, adults, kids) => {
+  try {
+    const res = await axios.get(`${baseUrl}/hostels/${hostelId}/rooms/${roomId}/booking`, {
+      headers: {
+        Authorization: "Bearer " + token
+      }
+    });
+    return res.data
+  }catch(error) {
+    console.error('[ postBookingRoom failed ]:', error)
+  } 
+}
+export const postBookingRoom = async (hostelId, roomId, token, keyword, checkin, checkout, adults, kids, tenantName, email, phone) => {
+  try {
+    const res = await axios.get(`${baseUrl}/hostels/${hostelId}/rooms/${roomId}/booking`, {
+      headers: {
+        Authorization: "Bearer " + token
+      }
+    });
+    return res.data
+  }catch(error) {
+    console.error('[ postBookingRoom failed ]:', error)
+  } 
+}
 
 export const searchRooms = async (keyword, checkin, checkout, adults, kids, token) => {
   try {
