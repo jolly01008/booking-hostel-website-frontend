@@ -38,21 +38,25 @@ export const getRoomPage = async (hostelId, roomId, token) => {
     console.error('[Get a Room failed]:', error)
   } 
 }
-export const getBookingRoom = async (hostelId, roomId, token, keyword, checkin, checkout, adults, kids) => {
+export const getBookingRoom = async (hostelId, roomId, token, checkin, checkout) => {
   try {
-    const res = await axios.get(`${baseUrl}/hostels/${hostelId}/rooms/${roomId}/booking`, {
+    const res = await axios.get(`${baseUrl}/hostels/${hostelId}/rooms/${roomId}/booking`, 
+    {
+      params: { checkin, checkout }, //如果在前端使用 axios.get 发送 GET 请求，并且通过 params 选项传递参数，这些参数会被自动转换为 URL 查询字符串的一部分。可以通过 req.query 在后端进行访问。但是，这不是 req.query 的主要用途，而是一个额外的特性。
       headers: {
         Authorization: "Bearer " + token
       }
     });
     return res.data
   }catch(error) {
-    console.error('[ postBookingRoom failed ]:', error)
+    console.error('[ getBookingRoom failed ]:', error)
   } 
 }
 export const postBookingRoom = async (hostelId, roomId, token, keyword, checkin, checkout, adults, kids, tenantName, email, phone) => {
   try {
-    const res = await axios.get(`${baseUrl}/hostels/${hostelId}/rooms/${roomId}/booking`, {
+    const res = await axios.post(`${baseUrl}/hostels/${hostelId}/rooms/${roomId}/booking`, 
+     { keyword, checkin, checkout, adults, kids, tenantName, email, phone }
+    ,{
       headers: {
         Authorization: "Bearer " + token
       }
@@ -83,4 +87,4 @@ export const searchRooms = async (keyword, checkin, checkout, adults, kids, toke
         });
     window.location.reload();
   } 
-}
+};

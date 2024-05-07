@@ -8,6 +8,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../contexts/AuthContext.jsx";
 import Swal from "sweetalert2";
+import { NavLink } from 'react-router-dom';
 
 //api
 import { getRoomPage } from "../../api/hostel.js";
@@ -20,6 +21,11 @@ export default function RoomPage () {
   const { isAuthenticated } = useAuth();
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
+
+  const checkin = JSON.parse(localStorage.getItem("checkin") || null);
+  const checkout = JSON.parse(localStorage.getItem("checkout") || null);
+  const adults = JSON.parse(localStorage.getItem("adults") || null);
+  const kids = JSON.parse(localStorage.getItem("kids") || null);
 
   const [room, setRoom] = useState("");
   const [hostel, setHostel] = useState("");
@@ -47,7 +53,6 @@ export default function RoomPage () {
       try {
         //後端拿到的所有資料存到room
         const singleRoomData = await getRoomPage(hostelId, roomId, token);
-        console.log('singleRoomData內容:', singleRoomData)
         // 改變hostel、singleRoomData的狀態，進而重新渲染畫面
         setRoom(singleRoomData.roomData);
         setHostel(singleRoomData.roomData.Hostel)
@@ -82,11 +87,17 @@ export default function RoomPage () {
                     <p className={styles.text}>◾一晚價格 : ${room.price}</p>
                     <p className={styles.text}>◾提供設備 : {room.facilities}</p>
                     <br />
+                    
                     <p className={styles.text}>◾旅館名稱 : {hostel.name}</p>
                     <p className={styles.text}>◾旅館地址 : {hostel.address}</p>
+                    <NavLink to={`/hostels/${hostelId}`}><button className={styles.hostelBtn}>回此旅館總覽</button>
+                     </NavLink>
                   </div>
               </div>
-              <Button  title="我想預約" size="big" onClick={wantBookingRoom}></Button>
+              {checkin && checkout && adults && kids?  
+                <Button title="我想預約" size="big" onClick={wantBookingRoom}></Button> : null
+                }
+              
       </div>
         
     </div>
