@@ -7,7 +7,7 @@ import RoomCard from "../../components/RoomCard/RoomCard.jsx";
 
 //api
 import { getHostels } from '../../api/hostel';
-import { useAuth } from "../../contexts/AuthContext";
+import { useAuth } from "../../contexts/AuthContext.jsx";
 
 //hook
 import { useEffect } from "react";
@@ -22,17 +22,11 @@ export default function MainPage() {
   const [hostels, setHostels] = useState([]);
   const [searchRooms, setSearchRooms] = useState([]); // 承接從SearchBar傳來的searchRooms資料，設定狀態
 
-  // const { isAuthenticated, currentMember } = useAuth();
   const { isAuthenticated } = useAuth();
   const token = localStorage.getItem("token");
+  const role = localStorage.getItem("role");
+  const currentRole = localStorage.getItem("currentRole");
 
-  // const role = currentMember?.role;
-  // const currentRole = currentMember?.currentRole;
-
-  // console.log('role內容:', role)
-  // console.log('currentRole內容:', currentRole)
-  // console.log('currentMember內容:', currentMember)
-  // console.log('currentMember.currentRole內容:', currentMember.currentRole)
   const searchBarDatas = async (datas) => {
     setSearchRooms(datas);
   };
@@ -57,13 +51,10 @@ export default function MainPage() {
   
   return ( 
     <div>
-      <NavBar></NavBar>
-
-      {/* {currentMember.role === "tenant"?  <NavBar></NavBar> : null }
-      {currentMember.role === "landlord" && 
-        (currentMember.currentRole === "tenant" || currentMember.currentRole === "landlord")? 
-        <NavBarLandlord></NavBarLandlord> : null
-      } */}
+      {(role === "tenant" || role === "landlord")
+         && currentRole === "tenant" ?  <NavBar></NavBar> : null }
+      {role === "landlord" && currentRole === "landlord"?  <NavBarLandlord></NavBarLandlord> : null }
+      
       <div className={styles.container}>
         <SearchBar searchRoomsResults={searchBarDatas}></SearchBar >
         

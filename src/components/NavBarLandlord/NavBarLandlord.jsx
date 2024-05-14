@@ -5,21 +5,20 @@ import { useNavigate } from 'react-router-dom'
 
 //hook
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 
 //scss
 import styles from "./NavBarLandlord.module.scss";
 
 
 export default function NavBarLandlord() {
-  const { landlordId } = useParams();
-  const { currentMember, isAuthenticated, getLandlord, switchRole } = useAuth();
-  const [landlordData, setLandlordData] = useState(null);
   const navigate = useNavigate()
 
-  const id = currentMember?.id;
+  const { currentMember, isAuthenticated, getLandlord, switchRole, logout } = useAuth();
   
-  const { logout } = useAuth();
+  const [landlordData, setLandlordData] = useState(null);
+
+  const id = currentMember?.id;
+  const landlordId = currentMember?.landlordId; // 取得currentMember的landlordId
   
   const handleClick = () => {
     logout();

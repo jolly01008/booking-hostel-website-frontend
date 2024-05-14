@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Swal from "sweetalert2";
 import { useNavigate, useParams } from "react-router-dom";
+import { useAuth } from '../../contexts/AuthContext'
 
 // components
 import NavBar from "../../components/NavBar/NavBar";
@@ -9,11 +10,9 @@ import NavBar from "../../components/NavBar/NavBar";
 // scss
 import styles from "./ApplyLandlord.module.scss";
 
-// api
-import { postApplyLandlord } from "../../api/user";
-
-
 export default function ApplyLandlord () {
+  const { postApplyLandlord } = useAuth()
+
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -24,8 +23,6 @@ export default function ApplyLandlord () {
   const [avatar, setAvatar] = useState("");
 
   const token = localStorage.getItem("token");
-
-  console.log('avatar', avatar)
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -40,8 +37,8 @@ export default function ApplyLandlord () {
       navigate(`/hostels`);
       Swal.fire({
         title: "申請房東成功",
-        text: "可以開始瀏覽自己的房東資訊、創建房源!",
-        timer: 2000,
+        text: "可切換成房東，編輯房東資訊、創建房源!",
+        timer: 3200,
         icon: "success",
         showConfirmButton: false,
       })

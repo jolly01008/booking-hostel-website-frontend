@@ -4,8 +4,10 @@ import { useEffect } from "react";
 import * as jwt from "jsonwebtoken"
 import { useNavigate } from "react-router-dom";
 
+// api
 import { login, register } from "../api/auth"
 import { getUserInfo, getLandlordInfo, switchRole } from "../api/setting"
+import { postApplyLandlord } from "../api/user";
 
 // 定義 context 內容
 const defaultAuthContext = {
@@ -43,6 +45,7 @@ export const AuthProvider = ({ children }) => {
           email: payload.email,
           role: payload.role,
           currentRole: payload.currentRole,
+          landlordId: payload.Landlord ? payload.Landlord.id : null
         },
          register: async (data) => {
           // 呼叫register function(向後端請求註冊的api)
@@ -56,7 +59,7 @@ export const AuthProvider = ({ children }) => {
         },
         login: async ( data ) => {
           // 呼叫login function(向後端請求登入的api)抽取到這邊
-          const { success, token } = await login({
+          const { success, token, user } = await login({
               email: data.email, 
               password: data.password
             })
@@ -65,6 +68,8 @@ export const AuthProvider = ({ children }) => {
               setPayload(tempPayload);
               setIsAuthenticated(true);
               localStorage.setItem("token", token);
+              localStorage.setItem("role", user.role);
+              localStorage.setItem("currentRole", user.currentRole);
             } else {
               setPayload(null);
               setIsAuthenticated(false);
@@ -92,12 +97,24 @@ export const AuthProvider = ({ children }) => {
               return null
             }
           },
+          postApplyLandlord: async (id, token, name, introduction, phone, country, avatar) => {
+            const data = await postApplyLandlord(id, token, name, introduction, phone, country, avatar);
+            if(data && data.status === 'success' && data.role === "landlord"){
+              localStorage.setItem("role", data.role);
+              const tempPayload = jwt.decode(token) //先解析目前的token
+              const updatedPayload = {
+                  ...tempPayload, // 複製 tempPayload 的所有屬性
+                  role: "landlord" // 將 role 屬性設置為 "landlord"
+                };
+              setPayload(updatedPayload) //把currentMember的role變成 "landlord"
+            }
+          },
           switchRole: async () => {
             const token = localStorage.getItem('token');
             const { data, switchedToken } = await switchRole(token) //先用目前的token呼叫這支api
-
             localStorage.setItem("token", switchedToken); // 呼叫switchRole後，後端會簽發一組新的token，儲存到localSotrage
             const switchedRolePayload = jwt.decode(switchedToken) //解析這組新的token
+            localStorage.setItem("currentRole", switchedRolePayload.currentRole); // 解析出來的新payload，currentRole項目儲存到localSotrage
             setPayload(switchedRolePayload); // 解析出來的新payload，setPayload()更新狀態
             return { data, switchedToken }
           },
