@@ -75,6 +75,7 @@ export default function SignInPage() {
         onChange={(passwordInputValue) => setPassword(passwordInputValue)}
       />
       <Button title="登入" size="middle" onClick={handleClick}></Button>
+      <a href="/signup">還沒有帳號嗎? 點我註冊</a>
     </AuthPageContainer>
     </div>
   )

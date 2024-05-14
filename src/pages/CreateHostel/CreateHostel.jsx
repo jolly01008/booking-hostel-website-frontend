@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Swal from "sweetalert2";
 import { useNavigate, useParams } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 
 // components
 import NavBarLandlord from "../../components/NavBarLandlord/NavBarLandlord";
@@ -107,8 +108,8 @@ export default function CreateHostel () {
                   />
                 </div>
               </div>
-              <div className={styles.btn}>
-                <button type="submit"> 確定建立 </button>
+              <div>
+                <button className={styles.btn} type="submit"> 確定建立 </button>
               </div>
             </form>
 

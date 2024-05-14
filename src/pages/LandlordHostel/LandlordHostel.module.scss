@@ -5,6 +5,21 @@
   width: 20%;
 }
 
+.btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
+  margin-left: 30%;
+  width: 20%;
+
+  border: none;
+  padding: 0.5rem 1.5rem;
+  color: white;
+  background-color: #4d8ea1;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
 .container {
   display: flex;
   flex-direction: column;

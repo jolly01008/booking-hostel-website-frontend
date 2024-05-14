@@ -13,17 +13,13 @@ import styles from "./NavBarLandlord.module.scss";
 export default function NavBarLandlord() {
   const navigate = useNavigate()
 
-  const { currentMember, isAuthenticated, getLandlord, switchRole, logout } = useAuth();
+  const { currentMember, isAuthenticated, getLandlord, switchRole } = useAuth();
   
   const [landlordData, setLandlordData] = useState(null);
 
   const id = currentMember?.id;
   const landlordId = currentMember?.landlordId; // 取得currentMember的landlordId
   
-  const handleClick = () => {
-    logout();
-  };
-
   const switchToUser = async () => {
     try{
       const res = await switchRole(); // 執行AuthContext的switchRole
@@ -53,8 +49,8 @@ export default function NavBarLandlord() {
       <div className={styles.NavBar}>
         
         <div className={styles.userSet}>
-          <h6 className={styles.barBtn}>Hi ~ {landlordData.name} </h6>
-          <NavLink className={styles.barBtn} to="/hostels">首頁</NavLink>
+          <div className={styles.barName}>Hi~ 房東 {landlordData.name} </div>
+          <NavLink className={styles.barBtn} to="/hostels">網站首頁</NavLink>
           {currentMember.currentRole === "landlord" && (
             <NavLink className={styles.barBtn} to={`/landlords/${landlordId}`}>房東資料</NavLink>
           )}
@@ -65,11 +61,8 @@ export default function NavBarLandlord() {
 
         <div className={styles.otherSet}>
           { currentMember.role === "landlord" && currentMember.currentRole === "landlord" && (
-            <NavLink className={styles.barBtn} onClick={switchToUser} to={`/users/${id}`}>切換成房客</NavLink>
+            <NavLink className={styles.barBtn} style={{color: 'yellow'}} onClick={switchToUser} to={`/users/${id}`}>切換成房客</NavLink>
           )}
-          <div onClick={handleClick}>
-            <a href="/signin" className={styles.barBtn}>登出</a>
-          </div>
         </div>
       </div>)}
           

@@ -63,8 +63,10 @@ export default function LandlordHostels () {
               ) : (
                 <h5>尚未有任何旅館...</h5>
               )}                  
-              <div className={styles.btn}>
-                <button> 新增旅館 + </button>
+              <div>
+                <NavLink to={`/landlords/${landlordId}/hostels/create`}>
+                <button className={styles.btn}> 新增旅館 + </button>
+                </NavLink>
               </div>
 
             </div>

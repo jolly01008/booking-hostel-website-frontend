@@ -14,14 +14,33 @@ html, body {
 
 .userSet{
   display: flex;
+  line-height: 58px;
+  height: 100%;
 }
 .otherSet{
   display: flex;
-  right: 10px;
+  line-height: 58px;
+  height: 100%;
 }
-.barBtn{
+
+.barBtn {
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-size: 18px;
+  text-decoration: none;
+  width: 120px;
+  height: 100%;
+}
+
+.barName {
   margin-right: 35px;
   color: white;
   font-size: 18px;
-  text-decoration:none
+  text-decoration: none;
+  height: 100%;
+}
+
+.barBtn:hover {
+  background-color: #1b586b;
 }

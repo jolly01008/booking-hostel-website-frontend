@@ -94,6 +94,7 @@ export default function SignUpPage() {
         onChange={(confirmPasswordInputValue) => setConfirmPassword(confirmPasswordInputValue)}
       />
       <Button title="註冊" size="middle" onClick={handleClick}></Button>
+      <a href="/signin">回到登入頁面</a>
     </AuthPageContainer>
     </div>
   )

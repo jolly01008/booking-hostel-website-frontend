@@ -11,13 +11,11 @@ import styles from "./NavBar.module.scss";
 
 
 export default function NavBar() {
-  const { currentMember, isAuthenticated, getUser, switchRole } = useAuth(); // SwitchRole - B
+  const { currentMember, isAuthenticated, getUser, switchRole, logout } = useAuth(); // SwitchRole - B
   const [userData, setUserData] = useState(null);
   const navigate = useNavigate()
 
   const id = currentMember?.id;
-  
-  const { logout } = useAuth();
   
   const handleClick = () => {
     logout();
@@ -52,8 +50,8 @@ export default function NavBar() {
       <div className={styles.NavBar}>
         
         <div className={styles.userSet}>
-          <h6 className={styles.barBtn}>Hi ~ {userData.name} </h6>
-          <NavLink className={styles.barBtn} to="/hostels">首頁</NavLink>
+          <div className={styles.barName}>Hi~ 房客 {userData.name} </div>
+          <NavLink className={styles.barBtn} to="/hostels">網站首頁</NavLink>
           {userData.currentRole === "tenant" && (
             <NavLink className={styles.barBtn} to={`/users/${id}`}>個人資料</NavLink>
           )}
@@ -64,10 +62,10 @@ export default function NavBar() {
 
         <div className={styles.otherSet}>
           { userData.role === "landlord" && userData.currentRole === "tenant" && (
-            <NavLink className={styles.barBtn} 
+            <NavLink className={styles.barBtn} style={{color: 'yellow'}}
             onClick={switchToLandlord}>切換成房東</NavLink>
           )}
-          <div onClick={handleClick}>
+          <div onClick={handleClick} className={styles.barBtn}>
             <a href="/signin" className={styles.barBtn}>登出</a>
           </div>
         </div>

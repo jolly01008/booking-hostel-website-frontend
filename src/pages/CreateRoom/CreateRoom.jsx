@@ -167,8 +167,8 @@ export default function CreateRoom () {
                   <input type="file" onChange={handleFileChange} name="pictures"/>
                 </div>
               </div>
-              <div className={styles.btn}>
-                <button type="submit"> 確定建立 </button>
+              <div>
+                <button type="submit" className={styles.btn}> 確定建立 </button>
               </div>
             </form>
             

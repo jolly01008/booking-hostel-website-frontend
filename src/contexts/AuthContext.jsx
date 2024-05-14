@@ -120,6 +120,11 @@ export const AuthProvider = ({ children }) => {
           },
           logout: () => {
             localStorage.removeItem("token");
+            localStorage.removeItem("keyword");
+            localStorage.removeItem("checkin");
+            localStorage.removeItem("checkout");
+            localStorage.removeItem("adults");
+            localStorage.removeItem("kids");
             setPayload(null);
             setIsAuthenticated(false);
             navigate("/signin");
