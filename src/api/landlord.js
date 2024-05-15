@@ -136,3 +136,51 @@ export const getLandlordRoom = async (landlordId, hostelId, roomId, token) => {
     throw error;
   }
 };
+
+export const getEditLandlord = async (token, landlordId) => {
+  console.log('getEditLandlord API 執行')
+  console.log('landlordId內容:', landlordId)
+try {
+    const response = await axios.get(`${baseURL}/landlords/${landlordId}/editLandlord`,
+  {
+    headers: {
+      Authorization: " Bearer " + token,
+    }
+  });
+  const { data } = response
+  return data;
+  
+  } catch ( error ){
+    console.error('getEditLandlord is Fail', error)
+  }
+};
+
+export const editLandlord = async (token, landlordId, name, phone, introduction, country, avatar) => {
+  try {
+    const formData = new FormData()
+    formData.append('name', name);  // append是將資料放入 FormData 物件中
+    formData.append('introduction', introduction);
+    formData.append('phone', phone);
+    formData.append('country', country);
+    formData.append('avatar', avatar);
+    
+    const response = await axios.put(`${baseURL}/landlords/${landlordId}/editLandlord`,
+      formData,
+        {
+          headers: {
+            Authorization: " Bearer " + token,
+          }
+        });
+    const { data } = response
+    return data;
+
+    } catch ( error ){
+      Swal.fire({
+          text: error.response.data.message,
+          icon: "error",
+          timer: 1800,
+          showConfirmButton: false,
+        });
+      console.error('editLandlord is Fail', error)
+    }
+  }

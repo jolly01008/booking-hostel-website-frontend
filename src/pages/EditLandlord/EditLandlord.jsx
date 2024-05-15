@@ -5,21 +5,19 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../../contexts/AuthContext.jsx";
 
 // components
-import NavBar from "../../components/NavBar/NavBar";
+import NavBarLandlord from "../../components/NavBarLandlord/NavBarLandlord";
 
 // scss
-import styles from "./EditUser.module.scss";
+import styles from "./EditLandlord.module.scss";
 
 // api
-import { getEditUser } from "../../api/user";
-import { editUser } from "../../api/user";
+import { getEditLandlord, editLandlord } from "../../api/landlord.js";
 
 
-export default function CreateRoom () {
-  const { id } = useParams();
+export default function EditLandlord () {
+  const { landlordId } = useParams();
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [introduction, setIntroduction] = useState("");
@@ -33,12 +31,12 @@ export default function CreateRoom () {
     setAvatar(file);
   };
 
-  const editUserClick = async (event) => {
+  const editLandlordClick = async (event) => {
     event.preventDefault(); // 防止表單預設提交行為
     try {
-      const editUserRes = await editUser(token, id, email, name, phone, introduction, country, avatar);
-      if(editUserRes && editUserRes.message === '變更成功'){
-        navigate(`/users/${id}`);
+      const editLandlordRes = await editLandlord(token, landlordId, name, phone, introduction, country, avatar);
+      if(editLandlordRes && editLandlordRes.message === '變更成功'){
+        navigate(`/landlords/${landlordId}`);
         Swal.fire({
           title: "編輯資料成功！",
           timer: 1800,
@@ -55,8 +53,7 @@ export default function CreateRoom () {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await getEditUser(token, id);
-        setEmail(data.email);
+        const data = await getEditLandlord(token, landlordId);
         setName(data.name);
         setPhone(data.phone);
         setIntroduction(data.introduction);
@@ -67,28 +64,20 @@ export default function CreateRoom () {
         throw error;
       }
     };
-    if (isAuthenticated && id) {
+    if (isAuthenticated && landlordId) {
       fetchData();
     }
-  }, [token, id, isAuthenticated]);
+  }, [token, landlordId, isAuthenticated]);
   return (
     <div>
-      <NavBar></NavBar>
+      <NavBarLandlord></NavBarLandlord>
       <div className={styles.container}>
         <div className={styles.allBlock}>
 
-          <h4 style={{fontWeight: 'bold'}}>編輯個人資料</h4>
+          <h4 style={{fontWeight: 'bold'}}>編輯房東資料</h4>
           <div className={styles.bookingForm}>
-            <form  onSubmit={editUserClick}>
+            <form  onSubmit={editLandlordClick}>
 
-              <div className={styles.inputSet}>
-                <label className={styles.inputName}>帳號信箱 </label>
-                <input className={styles.inputRow} 
-                      type="email" placeholder=" ex: test@example.com" maxLength={25}
-                      value={email} // 添加value屬性。把值綁定到 React 的狀態變量，讓React知道當前的值 
-                      onChange={(e) => setEmail(e.target.value)} // 添加onChange事件處理函式(onChange是當輸入框的值發生變化應執行的函式)
-                      name="email" required/>
-              </div> 
               <div className={styles.inputSet}>
                 <label className={styles.inputName}>顯示姓名 </label>
                 <input className={styles.inputRow} 

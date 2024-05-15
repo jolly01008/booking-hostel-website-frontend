@@ -1,5 +1,6 @@
 // components
 import NavBar from "../../components/NavBar/NavBar";
+import NavBarLandlord from "../../components/NavBarLandlord/NavBarLandlord";
 import RoomCard from "../../components/RoomCard/RoomCard.jsx";
 
 // hook
@@ -18,6 +19,8 @@ export default function HostelPage () {
   const { hostelId } = useParams();
   const { isAuthenticated } = useAuth();
   const token = localStorage.getItem("token");
+  const role = localStorage.getItem("role");
+  const currentRole = localStorage.getItem("currentRole");
 
   const [hostel, setHostel] = useState("");
   const [landlord, setLandlord] = useState("");
@@ -46,7 +49,9 @@ export default function HostelPage () {
 
   return (
     <div>
-      <NavBar></NavBar>
+      {(role === "tenant" || role === "landlord")
+         && currentRole === "tenant" ?  <NavBar></NavBar> : null }
+      {role === "landlord" && currentRole === "landlord"?  <NavBarLandlord></NavBarLandlord> : null }
       <div className={styles.container}>
               <div className={styles.allRoomsDatas}>
                 <div className={styles.hostelAndLandlord}>

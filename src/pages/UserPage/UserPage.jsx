@@ -46,7 +46,7 @@ export default function UserPage() {
             </div>
             
             <div className={styles.introduction}>
-              <h5 className={styles.aboutMe}>關於我</h5>
+              <h5 className={styles.aboutMe} style={{fontWeight: 'bold'}}>關於我</h5>
               <h6>{userData.introduction}</h6>
             </div>
             

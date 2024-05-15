@@ -1,5 +1,4 @@
 import axios from 'axios'
-
 import Swal from 'sweetalert2'
 
 const baseURL = 'http://localhost:3001/api'
@@ -17,10 +16,10 @@ try {
   return data;
   } catch ( error ){
      Swal.fire({
-        title: '沒有權限',
+        title: '提醒',
         text: error.response.data.message,
-        icon: "error",
-        timer: 1800,
+        icon: "warning",
+        timer: 2300,
         showConfirmButton: false,
       });
     console.error('getUser is Fail', error)
@@ -39,10 +38,10 @@ try {
   return data;
   } catch ( error ){
      Swal.fire({
-        title: '沒有權限',
+        title: '提醒',
         text: error.response.data.message,
-        icon: "error",
-        timer: 1800,
+        icon: "warning",
+        timer: 2300,
         showConfirmButton: false,
       });
     console.error('getLandlordInfo is Fail', error)

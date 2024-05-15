@@ -1,5 +1,6 @@
 // components
 import NavBar from "../../components/NavBar/NavBar";
+import NavBarLandlord from "../../components/NavBarLandlord/NavBarLandlord";
 import PictureCard from "../../components/PictureCard/PictureCard.jsx";
 import Button from '../../components/Button/Button'
 
@@ -20,6 +21,9 @@ export default function RoomPage () {
   const { hostelId, roomId } = useParams();
   const { isAuthenticated } = useAuth();
   const token = localStorage.getItem("token");
+  const role = localStorage.getItem("role");
+  const currentRole = localStorage.getItem("currentRole");
+
   const navigate = useNavigate();
 
   const checkin = JSON.parse(localStorage.getItem("checkin") || null);
@@ -67,7 +71,9 @@ export default function RoomPage () {
 
   return (
     <div>
-      <NavBar></NavBar>
+      {(role === "tenant" || role === "landlord")
+         && currentRole === "tenant" ?  <NavBar></NavBar> : null }
+      {role === "landlord" && currentRole === "landlord"?  <NavBarLandlord></NavBarLandlord> : null }
       <div className={styles.container}>
               <div className={styles.SingleRoomDatas}>
                   <div>
@@ -94,8 +100,12 @@ export default function RoomPage () {
                      </NavLink>
                   </div>
               </div>
-              {checkin && checkout && adults && kids?  
+              {checkin && checkout && adults && kids && currentRole==='tenant'?  
                 <Button title="我想預約" size="big" onClick={wantBookingRoom}></Button> : null
+                }
+              {currentRole==='landlord'?  
+                <h5 style={{marginTop: '1rem',marginBottom: '3rem', fontWeight:'bold', color:'red'}}>
+                  小提醒 : 若想預約房間，請切換成「房客身分」再做預約</h5> : null
                 }
               
       </div>

@@ -15,7 +15,7 @@ import { getEditUser } from "../../api/user";
 import { editUser } from "../../api/user";
 
 
-export default function CreateRoom () {
+export default function EditUser () {
   const { id } = useParams();
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();

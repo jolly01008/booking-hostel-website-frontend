@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Swal from "sweetalert2";
 import { useNavigate, useParams } from "react-router-dom";
-import { NavLink } from 'react-router-dom';
 
 // components
 import NavBarLandlord from "../../components/NavBarLandlord/NavBarLandlord";
