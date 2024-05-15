@@ -55,8 +55,14 @@ export default function UserPage() {
                 <li><h6>顯示姓名 : {userData.name}</h6></li>
                 <li><h6>帳號信箱 : {userData.email}</h6></li>
                 <li><h6>電話號碼 : {userData.phone}</h6></li>
-                <li><h6>國家 :  {userData.country}</h6></li>
+                <li><h6>居住城市 :  {userData.country}</h6></li>
               </ul>
+            </div>
+            
+            <div>
+              <a href={`/users/${id}/editUser`}>
+                <button type="submit" className={styles.btn}>編輯資料</button>
+              </a>
             </div>
           </div>)}
           
@@ -77,7 +83,7 @@ export default function UserPage() {
           </div>
 
           <h5 className={styles.bookingHistory}>舊訂房紀錄</h5>
-          <div className={styles.bookingContainer}>
+          <div className={styles.bookingContainer} style={{marginBottom: '4rem'}}>
           { pastBookingRooms.length > 0 ? 
             (pastBookingRooms.map((booking) => (
               <div key={booking.id} className={styles.bookingBlock}>

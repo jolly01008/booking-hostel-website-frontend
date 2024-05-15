@@ -54,8 +54,14 @@ export default function LandlordPage() {
               <ul className={styles.basicInform}>
                 <li><h6>顯示姓名 : {landlordData.name}</h6></li>
                 <li><h6>聯絡電話 : {landlordData.phone}</h6></li>
-                <li><h6>國家 :  {landlordData.country}</h6></li>
+                <li><h6>居住城市 :  {landlordData.country}</h6></li>
               </ul>
+            </div>
+
+            <div>
+              <a href={`/landlords/${landlordId}/editLandlord`}>
+                <button type="submit" className={styles.btn}>編輯資料</button>
+              </a>
             </div>
           </div>)}
 
