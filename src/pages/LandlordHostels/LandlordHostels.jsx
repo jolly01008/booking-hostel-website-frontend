@@ -48,17 +48,22 @@ export default function LandlordHostels () {
             <div className={styles.allBlock}>
               {hostels.length > 0 ? (
                 hostels.map((hostel) => (
-
-                <NavLink className={styles.NavLink}  key={hostel.id} to={`/landlords/${landlordId}/hostels/${hostel.id}/rooms`}>
-                <RowCard
-                  landlordId={landlordId}
-                  hostelId={hostel.id}
-                  name={hostel.name}
-                  address={hostel.address}
-                  description={hostel.description}
-                  picture={hostel.picture}
-                />
-                </NavLink>
+                  <div key={hostel.id}>
+                    <NavLink to={`/landlords/${landlordId}/hostels/${hostel.id}/edit`}>
+                      <button className={styles.editBtn}>編輯這個旅館</button>
+                    </NavLink>
+                    <NavLink className={styles.NavLink} to={`/landlords/${landlordId}/hostels/${hostel.id}/rooms`}>
+                      
+                    <RowCard
+                      landlordId={landlordId}
+                      hostelId={hostel.id}
+                      name={hostel.name}
+                      address={hostel.address}
+                      description={hostel.description}
+                      picture={hostel.picture}
+                    />
+                    </NavLink>
+                  </div>
                 ))
               ) : (
                 <h5>尚未有任何旅館...</h5>

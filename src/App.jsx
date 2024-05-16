@@ -20,6 +20,7 @@ import ApplyLandlord from "./pages/ApplyLandlord/ApplyLandlord.jsx";
 import EditLandlord from "./pages/EditLandlord/EditLandlord.jsx";
 import EditUser from "./pages/EditUser/EditUser.jsx";
 import EditRoom from "./pages/EditRoom/EditRoom.jsx";
+import EditHostel from "./pages/EditHostel/EditHostel.jsx";
 
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
                   <Route path=":landlordId/hostels/:hostelId/rooms/:roomId" element={<LandlordRoom />} />
                   <Route path=":landlordId/hostels/:hostelId/rooms" element={<LandlordHostel />} />
                   <Route path=":landlordId/hostels/:hostelId/createRoom" element={<CreateRoom />} />
+                  <Route path=":landlordId/hostels/:hostelId/edit" element={<EditHostel />} />
                   <Route path=":landlordId/hostels/create" element={<CreateHostel />} />
                   <Route path=":landlordId/hostels" element={<LandlordHostels />} />
                   <Route path=":landlordId/editLandlord" element={<EditLandlord />} />

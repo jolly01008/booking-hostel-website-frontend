@@ -111,6 +111,61 @@ export const getLandlordHostel = async (landlordId, hostelId, token) => {
     throw error;
   }
 };
+// 瀏覽房東單一要編輯的旅館
+export const getEditHostel = async (landlordId, hostelId, token) => {
+  try {
+    const response = await axios.get(`${baseURL}/landlords/${landlordId}/hostels/${hostelId}/edit`,
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
+    );
+    const { data } = response;
+    return data;
+
+  } catch (error) {
+    Swal.fire({
+        text: error.response.data.message,
+        icon: "warning",
+        timer: 1800,
+        showConfirmButton: false,
+      });
+    console.log("getEditHostel  is Fail", error);
+    throw error;
+  }
+};
+// 房東編輯單一個旅館
+export const editHostel = async (landlordId, hostelId, token, name, address, description, newPicture) => {
+  try {
+     const formData = new FormData()
+      formData.append('name', name);  // append是將資料放入 FormData 物件中
+      formData.append('address', address);
+      formData.append('description', description);
+      formData.append('picture', newPicture || '[]');
+
+    const response = await axios.put(`${baseURL}/landlords/${landlordId}/hostels/${hostelId}/edit`,
+    formData,
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
+    );
+    const { data } = response;
+    return data;
+
+  } catch (error) {
+    Swal.fire({
+        text: error.response.data.message,
+        icon: "warning",
+        timer: 1800,
+        showConfirmButton: false,
+      });
+    console.log("editHostel is Fail", error);
+    throw error;
+  }
+};
 
 // 瀏覽房東單一房間
 export const getLandlordRoom = async (landlordId, hostelId, roomId, token) => {

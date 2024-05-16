@@ -94,6 +94,9 @@ export default function CreateRoom () {
                   <option value="private_room">獨立套房</option>
                   <option value="mixed_dorm">混合住宿</option>
                 </select>
+                    <p style={{color:'red', fontSize:'14.5px', fontWeight:'bold', marginTop: '0.3rem'}}>
+                      *小提醒 : 房間類型建立後無法再編輯更動，建立時請確認好房間類型~
+                    </p>
               </div>
               
               <div className={styles.inputSet}>

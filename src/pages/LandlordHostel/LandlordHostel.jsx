@@ -48,7 +48,7 @@ export default function LandlordHostel () {
               <div className={styles.allRoomsDatas}>
                 {hostel ? (
                   <div className={styles.hostelData}>
-                    <h4>旅館資訊</h4>
+                    <h4 style={{fontWeight:'bold'}}>旅館資訊</h4>
                     <br />
                     <p className={styles.text}>{hostel.HostelName}</p>
                     <p className={styles.text}>{hostel.HostelAddress}</p>
