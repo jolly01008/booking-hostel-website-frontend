@@ -136,10 +136,73 @@ export const getLandlordRoom = async (landlordId, hostelId, roomId, token) => {
     throw error;
   }
 };
+// 瀏覽房東要編輯的單一房間
+export const getEditLandlordRoom = async (landlordId, hostelId, roomId, token) => {
+  try {
+    const response = await axios.get(`${baseURL}/landlords/${landlordId}/hostels/${hostelId}/rooms/${roomId}/edit`,
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
+    );
+    const { data } = response;
+    return data;
+
+  } catch (error) {
+    Swal.fire({
+        text: error.response.data.message,
+        icon: "warning",
+        timer: 1800,
+        showConfirmButton: false,
+      });
+    console.log("getEditLandlordRoom is Fail", error);
+    throw error;
+  }
+};
+// 房東編輯單一房間
+export const editLandlordRoom = async (landlordId, hostelId, roomId, token, title, type, headcount, price, facilities, newfacilities ,description, newPictures) => {
+  try {
+     const formData = new FormData()
+      formData.append('title', title);  // append是將資料放入 FormData 物件中
+      formData.append('type', type);
+      formData.append('price', price);
+      formData.append('headcount', headcount);
+      formData.append('facilities', newfacilities || facilities);
+      formData.append('description', description);
+
+      // 如果有新圖片則append新圖片，若無新圖片則給一個'[]' (至於為甚麼是'[]'與後端程式碼的撰寫有關)
+      if (newPictures) {
+           newPictures.forEach((newPicture) => {
+           formData.append('pictures', newPicture); 
+            });
+        } else {
+          formData.append('pictures', '[]');
+        }
+    const response = await axios.put(`${baseURL}/landlords/${landlordId}/hostels/${hostelId}/rooms/${roomId}/edit`,
+    formData,
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
+    );
+    const { data } = response;
+    return data;
+
+  } catch (error) {
+    Swal.fire({
+        text: error.response.data.message,
+        icon: "warning",
+        timer: 1800,
+        showConfirmButton: false,
+      });
+    console.log("editLandlordRoom is Fail", error);
+    throw error;
+  }
+};
 
 export const getEditLandlord = async (token, landlordId) => {
-  console.log('getEditLandlord API 執行')
-  console.log('landlordId內容:', landlordId)
 try {
     const response = await axios.get(`${baseURL}/landlords/${landlordId}/editLandlord`,
   {
