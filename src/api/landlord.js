@@ -256,6 +256,30 @@ export const editLandlordRoom = async (landlordId, hostelId, roomId, token, titl
     throw error;
   }
 };
+// 房東刪除單一房間
+export const deleteLandlordRoom = async (landlordId, hostelId, roomId, token) => {
+  try {
+    const response = await axios.delete(`${baseURL}/landlords/${landlordId}/hostels/${hostelId}/rooms/${roomId}/delete`,
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
+    );
+    const { data } = response;
+    return data;
+
+  } catch (error) {
+    Swal.fire({
+        text: error.response.data.message,
+        icon: "warning",
+        timer: 1800,
+        showConfirmButton: false,
+      });
+    console.log("deleteLandlordRoom is Fail", error);
+    throw error;
+  }
+};
 
 export const getEditLandlord = async (token, landlordId) => {
 try {

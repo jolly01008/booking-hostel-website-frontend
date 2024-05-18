@@ -1,15 +1,14 @@
-// .btn {
-//   display: flex;
-//   margin-top: 2.5rem;
-//   margin-left: 45%;
-//   width: 20%;
-// }
+.btnContainer {
+  display: flex;
+  width: 100%;
+  margin-top: -3rem;
+  margin-bottom: 2.5rem;
+}
+
 .btn {
   display: flex;
   justify-content: center;
-  margin-top: -2rem;
-  margin-bottom: 2.5rem;
-  width: 20%;
+  margin: 0rem 0.5rem;
 
   border: none;
   padding: 0.5rem 1.5rem;
@@ -22,7 +21,6 @@
 .container {
   display: flex;
   flex-direction: column;
-  // border:red 0.5px solid;
   margin: 0rem 12rem 0.5rem 12rem
 }
 
@@ -37,7 +35,6 @@
 }
 
 .roomTextDatas{
-  // border: solid pink 2px;
   background-color: rgb(240, 240, 240);
   margin-top: 1.5rem;
   margin-bottom: 6rem;

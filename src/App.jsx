@@ -46,6 +46,7 @@ function App() {
               <Route path="landlords">
                   <Route index element={<LandlordPage />} />
                   <Route path=":landlordId/hostels/:hostelId/rooms/:roomId/edit" element={<EditRoom />} />
+                  <Route path=":landlordId/hostels/:hostelId/rooms/:roomId/delete" element={<LandlordRoom />} />
                   <Route path=":landlordId/hostels/:hostelId/rooms/:roomId" element={<LandlordRoom />} />
                   <Route path=":landlordId/hostels/:hostelId/rooms" element={<LandlordHostel />} />
                   <Route path=":landlordId/hostels/:hostelId/createRoom" element={<CreateRoom />} />

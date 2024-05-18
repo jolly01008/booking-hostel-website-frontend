@@ -3,23 +3,60 @@ import NavBarLandlord from "../../components/NavBarLandlord/NavBarLandlord";
 import PictureCard from "../../components/PictureCard/PictureCard.jsx";
 
 // hook
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../contexts/AuthContext.jsx";
+import Swal from "sweetalert2";
 
 //api
-import { getLandlordRoom } from "../../api/landlord.js";
+import { getLandlordRoom, deleteLandlordRoom } from "../../api/landlord.js";
 
 // scss
 import styles from "./LandlordRoom.module.scss";
 
 export default function LandlordHostel () {
+  const navigate = useNavigate()
+
   const { landlordId, hostelId, roomId } = useParams();
   const { isAuthenticated } = useAuth();
   const token = localStorage.getItem("token");
 
   const [room, setRoom] = useState("");
   const [hostel, setHostel] = useState("");
+
+  // 點擊 刪除房間 按鈕
+  const deleteRoomClick = async () => {
+    try {
+      const data = await deleteLandlordRoom(landlordId, hostelId, roomId, token);
+      if(data && data.message === '成功刪除該房源'){
+        navigate(`/landlords/${landlordId}/hostels/${hostelId}/rooms`);
+        Swal.fire({
+          title: "成功刪除房間",
+          timer: 3000,
+          icon: "success",
+          showConfirmButton: false,
+        })
+      }else {
+        navigate(`/landlords/${landlordId}/hostels/${hostelId}/rooms`);
+        Swal.fire({
+          title: "刪除房間失敗",
+          text: "請確認刪除的房間，是否為自己的房源",
+          timer: 3000,
+          icon: "warning",
+          showConfirmButton: false,
+        })
+      }
+    } catch (error) {
+      console.error("刪除房間失敗，錯誤信息：", error);
+      Swal.fire({
+        title: "刪除房間失敗",
+        text: error.response.data.message,
+        timer: 3000,
+        icon: "error",
+        showConfirmButton: false,
+      });
+    }
+  };
 
   // 瀏覽room的實際應用
   useEffect(() => {
@@ -68,10 +105,12 @@ export default function LandlordHostel () {
                      
               </div>
 
-              <div>
-                <a href={`/landlords/${landlordId}/hostels/${hostelId}/rooms/${roomId}/edit`}>
+              <div className={styles.btnContainer}>
+                <a style={{textDecoration: 'none'}} href={`/landlords/${landlordId}/hostels/${hostelId}/rooms/${roomId}/edit`}>
                   <button type="submit" className={styles.btn}>編輯房間資料</button>
                 </a>
+
+                <button type="button" className={styles.btn} style={{background: 'red'}} onClick={deleteRoomClick}>刪除房間</button>
               </div>
 
       </div>
