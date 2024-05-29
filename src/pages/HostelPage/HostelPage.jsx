@@ -75,6 +75,7 @@ export default function HostelPage () {
                 </div>
                 
                 <div className={styles.roomContainer}>
+                    <h3 style={{fontWeight: "Bold",marginLeft: "15px", width: "100%"}}>{hostel.name} 的所有房間</h3>
                     {rooms.length > 0 ? (
                     rooms.map((room) => (
                     <NavLink className={styles.NavLink}  key={room.id} 

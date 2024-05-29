@@ -75,7 +75,7 @@ export default function LandlordHostel () {
               </div>
 
               <div>
-                <NavLink to={`/landlords/${landlordId}/hostels/${hostelId}/createRoom`}>
+                <NavLink to={`/landlords/${landlordId}/hostels/${hostelId}/createRoom`} style={{textDecoration: 'none'}}>
                   <button type="submit" className={styles.btn}> 對此旅館新增房間 </button>
                 </NavLink>
               </div>

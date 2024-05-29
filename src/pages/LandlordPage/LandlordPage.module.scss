@@ -24,6 +24,14 @@
   overflow: hidden
 }
 
+.img {
+  position: relative;
+  height: 8.5rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .introduction {
   margin-left: 4rem;
   width: 23rem;
@@ -64,7 +72,7 @@
   width: 35rem;
   justify-content: space-around;
   align-items: center;
-  height: 2.3rem;
+  height: 2.8rem;
 }
 
 .bookingTitle{

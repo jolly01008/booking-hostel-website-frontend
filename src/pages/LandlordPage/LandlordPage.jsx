@@ -69,41 +69,41 @@ export default function LandlordPage() {
             <div className={styles.newBooking}>
               <h5 className={styles.title}>最新訂單紀錄</h5>
               <div className={styles.bookingTitle}>
-                <h6 className={styles.bookingItem}>房間名稱</h6>
-                <h6 className={styles.bookingItemDate}>日期</h6>
-                <h6 className={styles.bookingItemPrice}>總價格</h6>
-                <h6 className={styles.bookingItemTenant}>房客名字</h6>
+                <h6 className={styles.bookingItem} style={{marginTop:'6.5px'}}>房間名稱</h6>
+                <h6 className={styles.bookingItemDate} style={{marginTop:'6.5px'}}>日期</h6>
+                <h6 className={styles.bookingItemPrice} style={{marginTop:'6.5px'}}>總價格</h6>
+                <h6 className={styles.bookingItemTenant} style={{marginTop:'6.5px'}}>房客名字</h6>
               </div>
               { newBooking.length > 0 ? 
                 (newBooking.map((booking) => (
                   <div key={booking.id} className={styles.bookingList}>
-                    <h6 className={styles.bookingItem}>{booking.Room.title}</h6>
-                    <h6 className={styles.bookingItemDate}>{booking.bookingDate} ~ {booking.checkoutDate}</h6>
-                    <h6 className={styles.bookingItemPrice}>${booking.totalPrice}</h6>
-                    <h6 className={styles.bookingItemTenant}>{booking.tenantName}</h6>
+                    <h6 className={styles.bookingItem} style={{marginTop:'6.5px'}}>{booking.Room.title}</h6>
+                    <h6 className={styles.bookingItemDate} style={{marginTop:'6.5px'}}>{booking.bookingDate} ~ {booking.checkoutDate}</h6>
+                    <h6 className={styles.bookingItemPrice} style={{marginTop:'6.5px'}}>${booking.totalPrice}</h6>
+                    <h6 className={styles.bookingItemTenant} style={{marginTop:'6.5px'}}>{booking.tenantName}</h6>
                   </div> 
                   )))
-                  :  null }
+                  : '目前還沒有訂單資料紀錄'}
             </div>
             
             <div className={styles.pastBooking}>
               <h5 className={styles.title}>過去訂單紀錄</h5>
               <div className={styles.bookingTitle}>
-                <h6 className={styles.bookingItem}>房間名稱</h6>
-                <h6 className={styles.bookingItemDate}>日期</h6>
-                <h6 className={styles.bookingItemPrice}>總價格</h6>
-                <h6 className={styles.bookingItemTenant}>房客名字</h6>
+                <h6 className={styles.bookingItem} style={{marginTop:'6.5px'}}>房間名稱</h6>
+                <h6 className={styles.bookingItemDate} style={{marginTop:'6.5px'}}>日期</h6>
+                <h6 className={styles.bookingItemPrice} style={{marginTop:'6.5px'}}>總價格</h6>
+                <h6 className={styles.bookingItemTenant} style={{marginTop:'6.5px'}}>房客名字</h6>
               </div>
               { pastBooking.length > 0 ? 
                 (pastBooking.map((booking) => (
                   <div key={booking.id} className={styles.bookingList}>
-                    <h6 className={styles.bookingItem}>{booking.Room.title}</h6>
-                    <h6 className={styles.bookingItemDate}>{booking.bookingDate} ~ {booking.checkoutDate}</h6>
-                    <h6 className={styles.bookingItemPrice}>${booking.totalPrice}</h6>
-                    <h6 className={styles.bookingItemTenant}>{booking.tenantName}</h6>
+                    <h6 className={styles.bookingItem} style={{marginTop:'6.5px'}} >{booking.Room.title}</h6>
+                    <h6 className={styles.bookingItemDate} style={{marginTop:'6.5px'}} >{booking.bookingDate} ~ {booking.checkoutDate}</h6>
+                    <h6 className={styles.bookingItemPrice} style={{marginTop:'6.5px'}} >${booking.totalPrice}</h6>
+                    <h6 className={styles.bookingItemTenant} style={{marginTop:'6.5px'}} >{booking.tenantName}</h6>
                   </div> 
                   )))
-                  :  null }
+                  :  '目前還沒有訂單資料紀錄' }
             </div>
           </div>
 

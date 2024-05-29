@@ -40,22 +40,39 @@ export default function BookingRoom () {
   const submitBookingRoom = async (event) => {
     event.preventDefault(); // 防止表單預設提交行為
     try {
-      await postBookingRoom(hostelId, roomId, token, keyword, checkin, checkout, adults, kids, tenantName, email, phone);
-      Swal.fire({
+      const result = await postBookingRoom(hostelId, roomId, token, keyword, checkin, checkout, adults, kids, tenantName, email, phone);
+      if ( result.status === 'warning' && result.message === '這個期間，該房間的床位不足!') {
+        Swal.fire({
+        title: "預約失敗",
+        text: '這個期間，該房間的床位不足!',
+        timer: 2300,
+        icon: "warning",
+        showConfirmButton: false,
+      })}
+
+      if ( result.status === 'success' && result.message === '預約成功!') {
+        Swal.fire({
         title: "預約成功！",
         timer: 2000,
         icon: "success",
         showConfirmButton: false,
       })
       navigate(`/users/${currentMember.id}`);
-
+      } else {  
+        Swal.fire({
+        title: "預約失敗",
+        text: result.message,
+        timer: 2300,
+        icon: "error",
+        showConfirmButton: false,
+      })}
     } catch (error) {
       console.error("預約房間失敗，錯誤信息：", error);
       Swal.fire({
         title: "預約失敗",
         text: error.response.data.message,
         timer: 2000,
-        icon: "error",
+        icon: "warning",
         showConfirmButton: false,
       });
     }
@@ -63,6 +80,11 @@ export default function BookingRoom () {
   const noBookingRoom = async (event) => {
     event.preventDefault(); // 防止表單預設提交行為
     try {
+      localStorage.removeItem("keyword");
+      localStorage.removeItem("checkin");
+      localStorage.removeItem("checkout");
+      localStorage.removeItem("adults");
+      localStorage.removeItem("kids");
       navigate(`/hostels`);
     } catch (error) {
       console.error("發生一些錯誤，錯誤信息：", error);
@@ -107,7 +129,7 @@ export default function BookingRoom () {
           <h5 className={styles.conditionText}>{ kids || null }位孩童</h5>
         </div>
         
-        <h5 className={styles.conditionText}>回首頁更改條件</h5>
+        {/* <h5 className={styles.conditionText}>回首頁更改條件</h5> */}
       </div>
       
       <div className={styles.hostelDatas}>
@@ -167,7 +189,7 @@ export default function BookingRoom () {
         <div className={styles.inputSet}>
           <h6 className={styles.bookingTitle}>預約姓名 </h6>
           <input className={styles.inputRow} 
-                     type="text" placeholder="請填寫全名" maxlength="10"
+                     type="text" placeholder="請填寫全名" maxLength="10"
                      onChange={(e) => setTenantName(e.target.value)} // 添加onChange事件處理函式(onChange是當輸入框的值發生變化應執行的函式)
                      value={tenantName} // 添加value屬性。把值綁定到 React 的狀態變量，讓React知道當前的值 
                      name="tenantName"/>
@@ -183,7 +205,7 @@ export default function BookingRoom () {
         <div className={styles.inputSet}>
           <h6 className={styles.bookingTitle}>預約電話 </h6>
           <input className={styles.inputRow} 
-                     type="text" placeholder="請填寫聯絡電話，ex. 0912345678" maxlength="10"
+                     type="text" placeholder="請填寫聯絡電話，ex. 0912345678" maxLength="10"
                      onChange={(e) => setPhone(e.target.value)} // 添加onChange事件處理函式(onChange是當輸入框的值發生變化應執行的函式)
                      value={phone} // 添加value屬性。把值綁定到 React 的狀態變量，讓React知道當前的值 
                      name="phone"/>
