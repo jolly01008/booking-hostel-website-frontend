@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { login, register } from "../api/auth"
 import { getUserInfo, getLandlordInfo, switchRole } from "../api/setting"
 import { postApplyLandlord } from "../api/user";
+import Swal from 'sweetalert2'
 
 // 定義 context 內容
 const defaultAuthContext = {
@@ -128,6 +129,11 @@ export const AuthProvider = ({ children }) => {
             setPayload(null);
             setIsAuthenticated(false);
             navigate("/signin");
+             Swal.fire({
+              title: "登出成功",
+              timer: 2800,
+              icon: "success",
+              showConfirmButton: false })
         },
           
         }}

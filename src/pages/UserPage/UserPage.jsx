@@ -75,10 +75,13 @@ export default function UserPage() {
                 <img className={styles.bookingImg} src={JSON.parse(booking.room.pictures)[0]} alt="房間圖片"></img>  
               </div>
               <h6 className={styles.roomText}>{booking.bookingDate} ~ {booking.checkoutDate}</h6>
-              <h6 className={styles.roomText}>房型:{booking.room.title}</h6>
+              <h6 className={styles.roomText}>房間: {booking.room.title}</h6>
+              <h6 className={styles.roomText}>房型: {booking.room.type}</h6>
               <h6 className={styles.roomText}>價格 ${booking.totalPrice}</h6>
-            </div> 
-            )))
+              { booking.bedRecords ?
+                <h6 className={styles.roomText}>床位:{booking.bedRecords.join(', ')} </h6> : <h6>床位: (套房不須床位)</h6> }
+          </div> 
+          )))
             :  null }
           </div>
 
@@ -91,8 +94,11 @@ export default function UserPage() {
                 <img className={styles.bookingImg} src={JSON.parse(booking.room.pictures)[0]} alt=""></img>  
               </div>
               <h6 className={styles.roomText}>{booking.bookingDate} ~ {booking.checkoutDate}</h6>
-              <h6 className={styles.roomText}>房型:{booking.room.title}</h6>
+              <h6 className={styles.roomText}>房間: {booking.room.title}</h6>
+              <h6 className={styles.roomText}>房型: {booking.room.type}</h6>
               <h6 className={styles.roomText}>價格 ${booking.totalPrice}</h6>
+              { booking.bedRecords ?
+                <h6 className={styles.roomText}>床位:{booking.bedRecords.join(', ')} </h6> : <h6>床位: (套房不須床位)</h6> }
             </div> 
             )))
             :  null }
