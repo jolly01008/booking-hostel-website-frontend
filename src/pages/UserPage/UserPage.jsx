@@ -79,7 +79,8 @@ export default function UserPage() {
               <h6 className={styles.roomText}>房型: {booking.room.type}</h6>
               <h6 className={styles.roomText}>價格 ${booking.totalPrice}</h6>
               { booking.bedRecords ?
-                <h6 className={styles.roomText}>床位:{booking.bedRecords.join(', ')} </h6> : <h6>床位: (套房不須床位)</h6> }
+                <h6 className={styles.roomText}>床位:{booking.bedRecords.join(', ')} </h6> : 
+                <h6 className={styles.roomText}>床位: (套房不需床位)</h6> }
           </div> 
           )))
             :  null }
@@ -98,7 +99,8 @@ export default function UserPage() {
               <h6 className={styles.roomText}>房型: {booking.room.type}</h6>
               <h6 className={styles.roomText}>價格 ${booking.totalPrice}</h6>
               { booking.bedRecords ?
-                <h6 className={styles.roomText}>床位:{booking.bedRecords.join(', ')} </h6> : <h6>床位: (套房不須床位)</h6> }
+                <h6 className={styles.roomText}>床位:{booking.bedRecords.join(', ')} </h6> : 
+                <h6 className={styles.roomText}>床位: (套房不需床位)</h6> }
             </div> 
             )))
             :  null }

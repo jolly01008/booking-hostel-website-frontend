@@ -3,6 +3,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import NavBarLandlord from "../../components/NavBarLandlord/NavBarLandlord";
 import PictureCard from "../../components/PictureCard/PictureCard.jsx";
 import Button from '../../components/Button/Button'
+import ConditionBar from '../../components/ConditionBar/ConditionBar'
 
 // hook
 import { useParams, useNavigate } from "react-router-dom";
@@ -74,6 +75,16 @@ export default function RoomPage () {
       {(role === "tenant" || role === "landlord")
          && currentRole === "tenant" ?  <NavBar></NavBar> : null }
       {role === "landlord" && currentRole === "landlord"?  <NavBarLandlord></NavBarLandlord> : null }
+
+      {(checkin && checkout && adults && kids) ? 
+        <ConditionBar
+          checkin={checkin}
+          checkout={checkout}
+          adults={adults}
+          kids={kids}>
+        </ConditionBar> 
+      : null}
+      
       <div className={styles.container}>
               <div className={styles.SingleRoomDatas}>
                   <div>

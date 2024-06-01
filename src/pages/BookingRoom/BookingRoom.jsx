@@ -1,12 +1,12 @@
 //hook
 import { useState, useEffect } from "react";
 import Swal from "sweetalert2";
-// import { useParams } from "react-router-dom";
 import { useNavigate, useParams } from "react-router-dom";
 
 // components
 import NavBar from "../../components/NavBar/NavBar";
 import Button from '../../components/Button/Button'
+import ConditionBar from '../../components/ConditionBar/ConditionBar'
 
 // scss
 import styles from "./BookingRoom.module.scss";
@@ -114,23 +114,16 @@ export default function BookingRoom () {
  return (
   <div>
     <NavBar></NavBar>
+    {(checkin && checkout && adults && kids) ? 
+        <ConditionBar
+          checkin={checkin}
+          checkout={checkout}
+          adults={adults}
+          kids={kids}>
+        </ConditionBar> 
+      : null}
     <div className={styles.container}>
       <div className={styles.allBlock}>
-        
-      <div className={styles.conditionBar}>
-        <h5 className={styles.conditionText}>輸入的條件</h5>
-        <div className={styles.barSet}>
-          <h5 className={styles.conditionText}> { checkin || null } </h5>
-          <h5 className={styles.conditionText}>&nbsp; ~ &nbsp;</h5>
-          <h5 className={styles.conditionText}> { checkout || null } </h5>
-        </div>
-        <div className={styles.barSet}>
-          <h5 className={styles.conditionText}>{ adults || null }位大人, &nbsp; </h5>
-          <h5 className={styles.conditionText}>{ kids || null }位孩童</h5>
-        </div>
-        
-        {/* <h5 className={styles.conditionText}>回首頁更改條件</h5> */}
-      </div>
       
       <div className={styles.hostelDatas}>
         <h6>旅館名稱: {hostel.name}</h6>
