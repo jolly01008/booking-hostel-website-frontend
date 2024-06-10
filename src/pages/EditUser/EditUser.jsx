@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../contexts/AuthContext.jsx";
+import useRedirectSignIn from "../../utils/Private.jsx"
 
 // components
 import NavBar from "../../components/NavBar/NavBar";
@@ -16,6 +17,7 @@ import { editUser } from "../../api/user";
 
 
 export default function EditUser () {
+  const redirectSignIn = useRedirectSignIn();
   const { id } = useParams();
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
@@ -69,8 +71,10 @@ export default function EditUser () {
     };
     if (isAuthenticated && id) {
       fetchData();
+    }else if (!token) {
+      redirectSignIn();
     }
-  }, [token, id, isAuthenticated]);
+  }, [token, id, isAuthenticated, redirectSignIn]);
   return (
     <div>
       <NavBar></NavBar>

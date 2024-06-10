@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../contexts/AuthContext.jsx";
 import { NavLink } from 'react-router-dom';
+import useRedirectSignIn from "../../utils/Private.jsx"
 
 //api
 import { getHostelPage } from "../../api/hostel.js";
@@ -16,6 +17,7 @@ import { getHostelPage } from "../../api/hostel.js";
 import styles from "./HostelPage.module.scss";
 
 export default function HostelPage () {
+  const redirectSignIn = useRedirectSignIn();
   const { hostelId } = useParams();
   const { isAuthenticated } = useAuth();
   const token = localStorage.getItem("token");
@@ -43,8 +45,10 @@ export default function HostelPage () {
     };
     // 最後記得執行 getHostelPageAsync 這個function
     getHostelPageAsync();
+    } else if (!token) {
+      redirectSignIn();
     }
-  }, [isAuthenticated, token, hostelId]);
+  }, [isAuthenticated, token, hostelId, redirectSignIn]);
 
 
   return (

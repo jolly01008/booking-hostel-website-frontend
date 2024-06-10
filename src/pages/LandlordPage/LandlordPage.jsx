@@ -5,13 +5,16 @@ import NavBarLandlord from "../../components/NavBarLandlord/NavBarLandlord.jsx";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../contexts/AuthContext.jsx";
+import useRedirectSignIn from "../../utils/Private.jsx"
 
 // //scss
 import styles from "./LandlordPage.module.scss";
 
 export default function LandlordPage() {
+  const redirectSignIn = useRedirectSignIn();
   const { landlordId } = useParams();
   const { isAuthenticated } = useAuth();
+  const token = localStorage.getItem("token");
 
   const [landlordData, setLandlordData] = useState(null);
   const [newBooking, setNewBooking] = useState([]);
@@ -32,8 +35,10 @@ export default function LandlordPage() {
     };
     if (isAuthenticated && landlordId) {
       fetchData();
+    } else if (!token) {
+      redirectSignIn();
     }
-  }, [isAuthenticated, getLandlord, landlordId]);
+  }, [isAuthenticated, getLandlord, landlordId, redirectSignIn, token]);
 
   return (
     <div>

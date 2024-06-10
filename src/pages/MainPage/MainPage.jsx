@@ -13,12 +13,14 @@ import { useAuth } from "../../contexts/AuthContext.jsx";
 import { useEffect } from "react";
 import { useState } from "react";
 import { NavLink } from 'react-router-dom';
+import useRedirectSignIn from "../../utils/Private.jsx"
 
 // SCSS
 import styles from "./MainPage.module.scss";
 
 
 export default function MainPage() {
+  const redirectSignIn = useRedirectSignIn();
   const [hostels, setHostels] = useState([]);
   const [searchRooms, setSearchRooms] = useState([]); // 承接從SearchBar傳來的searchRooms資料，設定狀態
 
@@ -46,8 +48,11 @@ export default function MainPage() {
     };
     // 最後記得執行 getHostelsAsync 這個function
     getHostelsAsync();
+    } else if (!token) {
+      redirectSignIn();
     }
-  }, [isAuthenticated, token]);
+
+  }, [isAuthenticated, token, redirectSignIn]);
   
   return ( 
     <div>
@@ -76,7 +81,7 @@ export default function MainPage() {
         </div> 
         : 
         <div>
-        <h5 className={styles.searchResults} style={{color: "#e35959", fontSize:'19px'}}>
+        <h5 className={styles.searchResults} style={{color: "#262626", fontSize:'20px'}}>
           以下為可瀏覽的民宿旅館~  請用上列「條件搜尋欄」，輸入「關鍵字、旅行日期、人數」條件找房間，開始訂房!</h5>
         <div className={styles.content}>
           {hostels.map((hostel) => {

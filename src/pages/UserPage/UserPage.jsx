@@ -9,9 +9,13 @@ import { useAuth } from "../../contexts/AuthContext.jsx";
 //scss
 import styles from "./UserPage.module.scss";
 
+import useRedirectSignIn from "../../utils/Private.jsx"
+
 export default function UserPage() {
   const { id } = useParams();
   const { isAuthenticated } = useAuth();
+  const redirectSignIn = useRedirectSignIn();
+  const token = localStorage.getItem("token");
 
   const [userData, setUserData] = useState(null);
   const [newBookingRooms, setNewBooking] = useState([]);
@@ -32,8 +36,10 @@ export default function UserPage() {
     };
     if (isAuthenticated && id) {
       fetchData();
+    } else if (!token) {
+      redirectSignIn();
     }
-  }, [id, isAuthenticated, getUser]);
+  }, [id, isAuthenticated, getUser, redirectSignIn, token]);
 
   return (
     <div>
