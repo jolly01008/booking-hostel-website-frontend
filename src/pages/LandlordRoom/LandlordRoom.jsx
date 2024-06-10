@@ -76,7 +76,6 @@ export default function LandlordHostel () {
     getLandlordRoomAsync();
     }
   }, [isAuthenticated, token, landlordId, hostelId, roomId]);
-
   return (
     <div>
       <NavBarLandlord></NavBarLandlord>
@@ -98,6 +97,7 @@ export default function LandlordHostel () {
                       <p className={styles.text}>◾房間描述: <br/>{room.description}</p>
                       <p className={styles.text}>◾一晚價格: ${room.price}</p>
                       <p className={styles.text}>◾提供設備: {room.facilities}</p>
+                      <p className={styles.text}>◾可入住人數: {room.headcount} 人</p>
                       <br />
                       <p className={styles.text}>◾旅館名稱: {hostel.name}</p>
                       <p className={styles.text}>◾旅館地址: {hostel.address}</p>

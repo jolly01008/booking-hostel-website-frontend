@@ -67,12 +67,13 @@ export default function LandlordPage() {
 
           <div className={styles.bookingContainer}>
             <div className={styles.newBooking}>
-              <h5 className={styles.title}>最新訂單紀錄</h5>
+              <h5 className={styles.title} style={{fontWeight:'bold'}}>最新訂單紀錄</h5>
               <div className={styles.bookingTitle}>
                 <h6 className={styles.bookingItem} style={{marginTop:'6.5px'}}>房間名稱</h6>
                 <h6 className={styles.bookingItemDate} style={{marginTop:'6.5px'}}>日期</h6>
                 <h6 className={styles.bookingItemPrice} style={{marginTop:'6.5px'}}>總價格</h6>
                 <h6 className={styles.bookingItemTenant} style={{marginTop:'6.5px'}}>房客名字</h6>
+                <h6 className={styles.bookingItemBeds} style={{marginTop:'6.5px'}}>混合房床位</h6>
               </div>
               { newBooking.length > 0 ? 
                 (newBooking.map((booking) => (
@@ -81,18 +82,22 @@ export default function LandlordPage() {
                     <h6 className={styles.bookingItemDate} style={{marginTop:'6.5px'}}>{booking.bookingDate} ~ {booking.checkoutDate}</h6>
                     <h6 className={styles.bookingItemPrice} style={{marginTop:'6.5px'}}>${booking.totalPrice}</h6>
                     <h6 className={styles.bookingItemTenant} style={{marginTop:'6.5px'}}>{booking.tenantName}</h6>
+                    { booking.bedRecords ?
+                    <h6 className={styles.bookingItemBeds}>{booking.bedRecords.join(', ')} </h6> : 
+                    <h6 className={styles.bookingItemBeds}> (套房不分床位)</h6> }
                   </div> 
                   )))
                   : '目前還沒有訂單資料紀錄'}
             </div>
             
             <div className={styles.pastBooking}>
-              <h5 className={styles.title}>過去訂單紀錄</h5>
+              <h5 className={styles.title} style={{fontWeight:'bold'}}>過去訂單紀錄</h5>
               <div className={styles.bookingTitle}>
                 <h6 className={styles.bookingItem} style={{marginTop:'6.5px'}}>房間名稱</h6>
                 <h6 className={styles.bookingItemDate} style={{marginTop:'6.5px'}}>日期</h6>
                 <h6 className={styles.bookingItemPrice} style={{marginTop:'6.5px'}}>總價格</h6>
                 <h6 className={styles.bookingItemTenant} style={{marginTop:'6.5px'}}>房客名字</h6>
+                <h6 className={styles.bookingItemBeds} style={{marginTop:'6.5px'}}>混合房床位</h6>
               </div>
               { pastBooking.length > 0 ? 
                 (pastBooking.map((booking) => (
@@ -101,6 +106,9 @@ export default function LandlordPage() {
                     <h6 className={styles.bookingItemDate} style={{marginTop:'6.5px'}} >{booking.bookingDate} ~ {booking.checkoutDate}</h6>
                     <h6 className={styles.bookingItemPrice} style={{marginTop:'6.5px'}} >${booking.totalPrice}</h6>
                     <h6 className={styles.bookingItemTenant} style={{marginTop:'6.5px'}} >{booking.tenantName}</h6>
+                    { booking.bedRecords ?
+                    <h6 className={styles.bookingItemBeds}>{booking.bedRecords.join(', ')}</h6> : 
+                    <h6 className={styles.bookingItemBeds}>(套房不分床位)</h6> }
                   </div> 
                   )))
                   :  '目前還沒有訂單資料紀錄' }

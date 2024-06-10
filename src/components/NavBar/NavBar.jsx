@@ -66,7 +66,7 @@ export default function NavBar() {
             onClick={switchToLandlord}>切換成房東</NavLink>
           )}
           <div onClick={handleClick} className={styles.barBtn}>
-            <a href="/signin" className={styles.barBtn}>登出</a>
+            <button className={styles.logoutBtn}>登出</button>
           </div>
         </div>
       </div>)}

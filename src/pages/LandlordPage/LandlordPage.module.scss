@@ -58,18 +58,18 @@
 
 .bookingContainer {
   display: flex;
-  flex-wrap: wrap;
+  // flex-wrap: wrap;
   margin-top: 3rem;
 }
 
 .pastBooking {
-  margin-left: 2rem;
+  margin-left: 0.3rem;
 }
 
 .bookingTitle,
 .bookingList {
   display: flex;
-  width: 35rem;
+  width: 100%;
   justify-content: space-around;
   align-items: center;
   height: 2.8rem;
@@ -89,20 +89,25 @@
 .bookingItem {
   margin-left: 0.5rem;
   width: 20%;
-  font-size: 14px
+  font-size: 13px
 }
 .bookingItemDate {
   margin-left: 1rem;
   width: 35%;
-  font-size: 14px
+  font-size: 13px
 }
 .bookingItemPrice {
   margin-left: 1rem;
-  width: 13%;
-  font-size: 14px
+  width: 10%;
+  font-size: 13px
 }
 .bookingItemTenant {
   margin-left: 1rem;
-  width: 15%;
-  font-size: 14px
+  width: 13%;
+  font-size: 13px
+}
+.bookingItemBeds {
+  margin-left: 1rem;
+  width: 23%;
+  font-size: 11.5px
 }

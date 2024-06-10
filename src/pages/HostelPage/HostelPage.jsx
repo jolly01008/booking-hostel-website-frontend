@@ -75,20 +75,24 @@ export default function HostelPage () {
                 </div>
                 
                 <div className={styles.roomContainer}>
-                    <h3 style={{fontWeight: "Bold",marginLeft: "15px", width: "100%"}}>{hostel.name} 的所有房間</h3>
                     {rooms.length > 0 ? (
-                    rooms.map((room) => (
-                    <NavLink className={styles.NavLink}  key={room.id} 
-                            to={`/hostels/${hostelId}/rooms/${room.id}`}>
-                    <RoomCard
-                      title={room.title}
-                      price={room.price}
-                      pictures={JSON.parse(room.pictures)}
-                    />
-                    </NavLink>
-                    ))
+                      <>
+                        <h3 style={{fontWeight: "Bold",marginLeft: "15px", width: "100%"}}>{hostel.name} 的所有房間</h3>
+                        {rooms.map((room) => (
+                        <NavLink 
+                          className={styles.NavLink}  
+                          key={room.id} 
+                          to={`/hostels/${hostelId}/rooms/${room.id}`}>
+                          <RoomCard
+                            title={room.title}
+                            price={room.price}
+                            pictures={JSON.parse(room.pictures)}
+                          />
+                        </NavLink>
+                        ))}
+                      </>
                   ) : (
-                    <h5>該旅館尚未有任何房間。可先參考其他旅館</h5>
+                    <h5 style={{fontWeight: "Bold",fontSize: "25px"}}>該旅館尚未有任何房間。可先參考其他旅館</h5>
                   )}
                 </div>
                      

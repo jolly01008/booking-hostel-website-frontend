@@ -12,9 +12,15 @@
 }
 
 .barSet {
-  /*   border: orange 1px solid; */
+  // border: orange 1px solid; 
   display: flex;
   align-items: center;
+}
+.headcountBarSet {
+  // border: orange 1px solid; 
+  padding-top: 34px;
+  display: flex;
+  flex-direction: column;
 }
 
 .placeInput {
@@ -35,5 +41,6 @@
 }
 
 .textItem{
+  font-weight: bold;
   margin-top: 0.5rem;
 }

@@ -64,6 +64,13 @@ export const postBookingRoom = async (hostelId, roomId, token, keyword, checkin,
     return res.data
   }catch(error) {
     console.error('[ postBookingRoom failed ]:', error)
+    Swal.fire({
+        title: "預約失敗",
+        text: error.response.data.message,
+        timer: 2000,
+        icon: "warning",
+        showConfirmButton: false,
+      });
   } 
 }
 

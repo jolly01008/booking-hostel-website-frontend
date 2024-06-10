@@ -67,9 +67,9 @@ export default function BookingRoom () {
         showConfirmButton: false,
       })}
     } catch (error) {
-      console.error("預約房間失敗，錯誤信息：", error);
+      console.error("送出預約房間失敗，錯誤信息：", error);
       Swal.fire({
-        title: "預約失敗",
+        title: "出現一些錯誤，預約失敗",
         text: error.response.data.message,
         timer: 2000,
         icon: "warning",
@@ -185,7 +185,8 @@ export default function BookingRoom () {
                      type="text" placeholder="請填寫全名" maxLength="10"
                      onChange={(e) => setTenantName(e.target.value)} // 添加onChange事件處理函式(onChange是當輸入框的值發生變化應執行的函式)
                      value={tenantName} // 添加value屬性。把值綁定到 React 的狀態變量，讓React知道當前的值 
-                     name="tenantName"/>
+                     name="tenantName"
+                     required/>
         </div>
         <div className={styles.inputSet}>
           <h6 className={styles.bookingTitle}>預約信箱 </h6>
@@ -193,7 +194,8 @@ export default function BookingRoom () {
                      type="email" placeholder="請填寫聯絡信箱"
                      onChange={(e) => setEmail(e.target.value)} // 添加onChange事件處理函式(onChange是當輸入框的值發生變化應執行的函式)
                      value={email} // 添加value屬性。把值綁定到 React 的狀態變量，讓React知道當前的值 
-                     name="email"/>
+                     name="email"
+                      required/>
         </div>
         <div className={styles.inputSet}>
           <h6 className={styles.bookingTitle}>預約電話 </h6>
@@ -201,7 +203,8 @@ export default function BookingRoom () {
                      type="text" placeholder="請填寫聯絡電話，ex. 0912345678" maxLength="10"
                      onChange={(e) => setPhone(e.target.value)} // 添加onChange事件處理函式(onChange是當輸入框的值發生變化應執行的函式)
                      value={phone} // 添加value屬性。把值綁定到 React 的狀態變量，讓React知道當前的值 
-                     name="phone"/>
+                     name="phone"
+                      required/>
         </div>
       </div>
         

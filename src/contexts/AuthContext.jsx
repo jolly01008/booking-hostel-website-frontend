@@ -131,7 +131,7 @@ export const AuthProvider = ({ children }) => {
             navigate("/signin");
              Swal.fire({
               title: "登出成功",
-              timer: 2800,
+              timer: 2000,
               icon: "success",
               showConfirmButton: false })
         },

@@ -89,6 +89,9 @@ export default function EditUser () {
                       onChange={(e) => setEmail(e.target.value)} // 添加onChange事件處理函式(onChange是當輸入框的值發生變化應執行的函式)
                       name="email" required/>
               </div> 
+              <p style={{color:'red', fontSize:'14.5px', fontWeight:'bold'}}>
+                請注意，若更改帳號信箱，下次登入時請用新的帳號才可成功登入
+              </p>
               <div className={styles.inputSet}>
                 <label className={styles.inputName}>顯示姓名 </label>
                 <input className={styles.inputRow} 

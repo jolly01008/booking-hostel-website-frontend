@@ -66,13 +66,13 @@ export default function SignUpPage() {
     <AuthPageContainer title="註冊 Booking Hostel">
       <AuthInput
         label="名字"
-        placeholder="請輸入名字"
+        placeholder="請輸入名字，範例: 王天兵"
         value={name}
         onChange={(nameInputValue) => setName(nameInputValue)}
       />
       <AuthInput
         label="帳號"
-        placeholder="請輸入帳號"
+        placeholder="請輸入帳號，範例: example@gmail.com"
         type="email"
         value={email}
         onChange={(emailInputValue) => {

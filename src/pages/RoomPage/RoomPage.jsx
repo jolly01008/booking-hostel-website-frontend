@@ -87,6 +87,11 @@ export default function RoomPage () {
       
       <div className={styles.container}>
               <div className={styles.SingleRoomDatas}>
+                  {currentRole==='landlord'?  
+                  <h4 style={{marginTop: '1rem',marginBottom: '3rem', fontWeight:'bold', color:'red', fontSize:'22px'}}>
+                    小提醒 : 若想預約房間，請切換成「房客身分」再做預約</h4> : null
+                  }
+
                   <div>
                     <h4 style={{ marginBottom: "1.5rem", fontWeight: "bold" }}>{room.title} 的相關資訊</h4>
                     { room ? (
@@ -103,6 +108,7 @@ export default function RoomPage () {
                     <p className={styles.text}>◾房間描述 : <br/>{room.description}</p>
                     <p className={styles.text}>◾一晚價格 : ${room.price}</p>
                     <p className={styles.text}>◾提供設備 : {room.facilities}</p>
+                    <p className={styles.text}>◾可入住人數: {room.headcount} 人</p>
                     <br />
                     
                     <p className={styles.text}>◾旅館名稱 : {hostel.name}</p>
@@ -113,10 +119,6 @@ export default function RoomPage () {
               </div>
               {checkin && checkout && adults && kids && currentRole==='tenant'?  
                 <Button title="我想預約" size="big" onClick={wantBookingRoom}></Button> : null
-                }
-              {currentRole==='landlord'?  
-                <h5 style={{marginTop: '1rem',marginBottom: '3rem', fontWeight:'bold', color:'red'}}>
-                  小提醒 : 若想預約房間，請切換成「房客身分」再做預約</h5> : null
                 }
               
       </div>

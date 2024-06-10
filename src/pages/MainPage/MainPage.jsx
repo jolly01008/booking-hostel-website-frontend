@@ -57,10 +57,9 @@ export default function MainPage() {
       
       <div className={styles.container}>
         <SearchBar searchRoomsResults={searchBarDatas}></SearchBar >
-        
         {searchRooms.length > 0 ? 
         <div>
-            <h3 className={styles.searchResults}>搜尋結果如下</h3>
+            <h3 className={styles.searchResults}>搜尋的房間結果如下</h3>
             <div className={styles.roomContainer}>
               {searchRooms.length > 0 ? (
               searchRooms.map((room) => (
@@ -76,6 +75,9 @@ export default function MainPage() {
             </div>
         </div> 
         : 
+        <div>
+        <h5 className={styles.searchResults} style={{color: "#e35959", fontSize:'19px'}}>
+          以下為可瀏覽的民宿旅館~  請用上列「條件搜尋欄」，輸入「關鍵字、旅行日期、人數」條件找房間，開始訂房!</h5>
         <div className={styles.content}>
           {hostels.map((hostel) => {
             return ( 
@@ -88,7 +90,7 @@ export default function MainPage() {
                 price={hostel.Rooms.length > 0?hostel.Rooms[0].price : "(該房間尚未設定完畢)"}   //取出Rooms的第一個price是最低價格
                 /> );
           })}
-        </div>
+        </div></div>
         }
         
       </div>

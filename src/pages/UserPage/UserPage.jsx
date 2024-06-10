@@ -75,7 +75,7 @@ export default function UserPage() {
                 <img className={styles.bookingImg} src={JSON.parse(booking.room.pictures)[0]} alt="房間圖片"></img>  
               </div>
               <h6 className={styles.roomText}>{booking.bookingDate} ~ {booking.checkoutDate}</h6>
-              <h6 className={styles.roomText}>房間: {booking.room.title}</h6>
+              <h6 className={styles.roomText}><h6 className={styles.roomName}>房間: {booking.room.title}</h6></h6>
               <h6 className={styles.roomText}>房型: {booking.room.type}</h6>
               <h6 className={styles.roomText}>價格 ${booking.totalPrice}</h6>
               { booking.bedRecords ?
@@ -95,7 +95,7 @@ export default function UserPage() {
                 <img className={styles.bookingImg} src={JSON.parse(booking.room.pictures)[0]} alt=""></img>  
               </div>
               <h6 className={styles.roomText}>{booking.bookingDate} ~ {booking.checkoutDate}</h6>
-              <h6 className={styles.roomText}>房間: {booking.room.title}</h6>
+              <h6 className={styles.roomText}><h6 className={styles.roomName}>房間: {booking.room.title}</h6></h6>
               <h6 className={styles.roomText}>房型: {booking.room.type}</h6>
               <h6 className={styles.roomText}>價格 ${booking.totalPrice}</h6>
               { booking.bedRecords ?

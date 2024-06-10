@@ -15,8 +15,8 @@ export default function SearchBar({searchRoomsResults}) {
   const [keyword, setKeyword] = useState("");
   const [checkin, setCheckin] = useState("");
   const [checkout, setCheckout] = useState("");
-  const [adults, setAdults] = useState("");
-  const [kids, setKis] = useState("");
+  const [adults, setAdults] = useState(1);
+  const [kids, setKis] = useState(0);
   const [searchData, setSearchData] = useState(""); // --------B直接在這邊setLocalStoreage
   
   const searchRoomsClick = async (event) => {
@@ -27,7 +27,7 @@ export default function SearchBar({searchRoomsResults}) {
         await Swal.fire({
           title: "找不到符合條件的資料",
           text: "找不到相關結果，試試別的關鍵字。",
-          timer: 2800,
+          timer: 3200,
           icon: "warning",
           showConfirmButton: false,
         });
@@ -36,8 +36,8 @@ export default function SearchBar({searchRoomsResults}) {
       if( searchResults.message === "這段期間已經沒有可預約的房間") {
         await Swal.fire({
           title: "找不到符合條件的資料",
-          text: "這段期間已沒有符合該人數條件的可預約房間",
-          timer: 2800,
+          text: "這段期間，已沒有符合該人數條件 的可預約房間",
+          timer: 3200,
           icon: "warning",
           showConfirmButton: false,
         });
@@ -76,15 +76,20 @@ export default function SearchBar({searchRoomsResults}) {
                 onChange={(e) => setCheckout(e.target.value)} value={checkout}
           />
         </div>
-        <div className={styles.barSet}>
-          <h6 className={styles.textItem}>大人 </h6>
-          <input type="number" min="1" max="50" className={styles.headCountInput} placeholder="人數"
-                onChange={(e) => setAdults(e.target.value)} value={adults}
-          />
-          <h6 className={styles.textItem}> &nbsp;  &nbsp; 孩童 </h6>
-          <input type="number" min="0" max="50" className={styles.headCountInput}  placeholder="人數"
-                onChange={(e) => setKis(e.target.value)} value={kids}
-          />
+        <div className={styles.headcountBarSet}>
+
+          <div className={styles.barSet}>
+            <h6 className={styles.textItem}>大人 </h6>
+            <input type="number" min="1" max="50" className={styles.headCountInput} placeholder="人數"
+                  onChange={(e) => setAdults(e.target.value)} value={adults} />
+            <h6 className={styles.textItem}> &nbsp;  &nbsp; 孩童 </h6>
+            <input type="number" min="0" max="50" className={styles.headCountInput}  placeholder="人數"
+                  onChange={(e) => setKis(e.target.value)} value={kids} />
+          </div>
+          <p style={{color:'#424242', fontSize:'11px', fontWeight:'400'}}>
+            補充 : 每2個孩童(12歲以下)，才算1個人頭數
+          </p>
+
         </div>
         <Button type="submit" variant="primary" className={styles.button}>搜尋</Button>
       </form>
